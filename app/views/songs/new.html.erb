@@ -1,0 +1,7 @@
+<%= form_for @song, url:find_videos_songs_path do |f| %>
+
+<%= f.text_field :name %>
+
+<%= button_to 'ボタン', {controller=> 'songs', action: :find_videos} %>
+
+<% end %>
