@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_084355) do
+ActiveRecord::Schema.define(version: 2019_12_02_115801) do
+
+  create_table "songs", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "artist", null: false
+    t.string "video_id", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_084355) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "username", null: false
+    t.string "name", null: false
     t.string "introduction", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
