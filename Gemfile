@@ -61,3 +61,22 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
+
+gem 'faker'
+gem 'bootstrap-sass'
+gem 'google-api-client',require: 'google/apis/youtube_v3'
+
+group :production do
+  gem 'mysql2'
+end
+
+
+
+
+
+
+
+
+
+
+
