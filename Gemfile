@@ -61,12 +61,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
-
+gem 'pry-rails'
+gem 'pry-byebug'
 gem 'faker'
 gem 'bootstrap-sass'
+gem 'jquery-rails'
 gem 'google-api-client',require: 'google/apis/youtube_v3'
-
-group :production do
+gem 'dotenv-rails'
+group :production, :staging do
   gem 'mysql2'
 end
 
