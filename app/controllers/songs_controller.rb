@@ -1,5 +1,4 @@
 class SongsController < ApplicationController
-	GOOGLE_API_KEY = 'AIzaSyCWWAdAI0NAtxFYvVZYEIRY07nQuCD7kKM'
 
 	def index
 		@songs = Song.all
