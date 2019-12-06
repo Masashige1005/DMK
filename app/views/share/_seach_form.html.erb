@@ -1,0 +1,6 @@
+<dl class="searchbox">
+    <%= search_form_for @q, url: search_path do |f| %>
+      <dt><%= f.text_field :name_or_categorie_name_or_artist_name_or_discs_songs_name_cont, placeholder: '検索するテキストを入力...' %></dt>
+      <dd><%= f.submit "検索" , class: 'search-btn'%></dd>
+    <% end %>
+</dl>
