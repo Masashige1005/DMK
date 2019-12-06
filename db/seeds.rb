@@ -14,3 +14,8 @@
  			  video_id: 'btrzs54s1Rc'
  			  )
 end
+
+	User.create!(name: 'aaa',
+				 email: 'aa@aa',
+				 password: 'aaaaaa',
+				 introduction: 'aaaaaa')

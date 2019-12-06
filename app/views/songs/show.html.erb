@@ -3,6 +3,8 @@
 	<%= @song.name %>
 	<%= @song.artist %>
 
+
+
 	<div class = "song_description">
 		<%= @song.description %>
 	</div>
@@ -11,4 +13,17 @@
 	<div class = "song_video">
 		<iframe width="700" height="410" src="https://www.youtube.com/embed/<%= @song.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
+	<div class = "comment-box">
+		<div class ="contents row">
+			<div id="comments_area">
+      		<!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+      		<%= render partial: 'comments/index', locals: { comments: @comments } %>
+    		</div>
+    		<% if user_signed_in? %>
+      		<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+      			<%= render partial: 'comments/form', locals: { comment: @comment, song: @song } %>
+   			<% end %>
+  		</div>
+  	</div>
+  	<%= render "favorites/favorite", song: @song %>
 </div>

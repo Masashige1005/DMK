@@ -1,4 +1,4 @@
-      <!-- customer がログインしていた場合 -->
+      <!-- ユーザー がログインしていた場合 -->
       <% if user_signed_in? %>
         <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid block">
@@ -20,10 +20,9 @@
                 <li><%= link_to '投稿', new_song_path  %></li>
               </ul>
             </div>
-            <div class="list3"><%= "#{current_user.name}" %>さま</div>
           </div>
         </nav>
-      <!-- customer がログインしていなかっ場合 -->
+      <!-- ユーザー がログインしていなかった場合 -->
       <% else %>
         <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid block">

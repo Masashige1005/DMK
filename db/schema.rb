@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_093259) do
+ActiveRecord::Schema.define(version: 2019_12_06_151508) do
 
   create_table "comments", force: :cascade do |t|
-    t.text "comment", null: false
+    t.string "content", null: false
     t.integer "song_id", null: false
     t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "song_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_093259) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "favorites_count", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,5 @@
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <p><%= comment.content %></p>
+  <% end %>
+<% end %>

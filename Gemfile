@@ -68,6 +68,11 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'google-api-client',require: 'google/apis/youtube_v3'
 gem 'dotenv-rails'
+gem 'font-awesome-sass', '~> 5.4.1'
+
+
+gem 'counter_culture', '~> 1.8'
+
 group :production, :staging do
   gem 'mysql2'
 end

@@ -1,0 +1,21 @@
+<div id="song-<%= song.id %>">
+<span class="favorite">
+  <% if user_signed_in? %>
+    <% if song.good?(current_user) %>
+      <%= link_to song_favorites_path(song_id: song.id), {method: :delete, remote: true} do %>
+<!--          <%= button_tag do %> -->
+            <i class="fa fa-heart faa-pulse animated fa-2x" aria-hidden="true" style="color: red;" ></i>
+            <%= content_tag :span, "#{song.favorites_count}" %>
+          <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to  song_favorites_path(song_id: song.id), {method: :post, remote: true} do %>
+<!--          <%= button_tag do %>
+ -->          <i class="far fa-heart fa-2x" aria-hidden="true"></i>
+          <%= content_tag :span, "#{song.favorites_count}" %>
+          <% end %>
+      <% end %>
+    <% end %>
+  <%end %>
+</span>
+</div>
