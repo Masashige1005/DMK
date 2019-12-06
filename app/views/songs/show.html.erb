@@ -2,4 +2,8 @@
 <div class = "container">
 	<%= @song.name %>
 	<%= @song.artist %>
+
+	<div clss = "song-video">
+		<iframe width="700" height="410" src="https://www.youtube.com/embed/<%= @song.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
 </div>

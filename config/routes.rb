@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :songs, only: [:show, :new, :create] do
   	post 'find_videos', on: :collection
   end
+  resources :users, only: [:show]
 
 end

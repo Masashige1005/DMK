@@ -64,6 +64,7 @@ gem 'devise'
 
 gem 'faker'
 gem 'bootstrap-sass'
+gem 'jquery-rails'
 gem 'google-api-client',require: 'google/apis/youtube_v3'
 
 group :production do

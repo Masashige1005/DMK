@@ -1,0 +1,49 @@
+      <!-- customer がログインしていた場合 -->
+      <% if user_signed_in? %>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid block">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <p class = "navbar-brand">DMK</p>
+            </div>
+
+            <div class="collapse navbar-collapse list1" id="bs-example-navbar-collapse-2">
+              <ul class="nav navbar-nav">
+                <li><%= link_to '楽曲一覧', root_path %></li>
+                <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
+                <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete  %></li>
+                <li><%= link_to '投稿', new_song_path  %></li>
+              </ul>
+            </div>
+            <div class="list3"><%= "#{current_user.name}" %>さま</div>
+          </div>
+        </nav>
+      <!-- customer がログインしていなかっ場合 -->
+      <% else %>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid block">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <p class="navbar-brand">DMK</p>
+            </div>
+
+            <div class="collapse navbar-collapse list1" id="bs-example-navbar-collapse-2">
+              <ul class="nav navbar-nav">
+                <li><%= link_to '楽曲一覧',root_path%> <span class="sr-only">(current)</span></a></li>
+                <li><%= link_to 'ログイン',new_user_session_path%></li>
+                <li><%= link_to '新規登録',new_user_registration_path%></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      <% end %>
