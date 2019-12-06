@@ -1,7 +1,15 @@
-<%= form_for @song, url:find_videos_songs_path do |f| %>
+<%= form_tag(new_song_path, method: :get) do %>
 
-<%= f.text_field :name %>
+<%= text_field_tag :search %>
 
-<%= button_to 'ボタン', {controller=> 'songs', action: :find_videos} %>
+<%= submit_tag '検索', name: nil %>
 
+<% end %>
+
+<% if @data != nil %>
+	<% @data.items.each do |item| %>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+	<% end %>
 <% end %>
