@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   	resources :comments
   	resource :favorites, only: [:create, :destroy]
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    post 'follow', on: :member
+    post 'unfollow', on: :member
+  end
+
+  get 'search', to: 'songs#search_results', via: [:get, :post]
 
 end

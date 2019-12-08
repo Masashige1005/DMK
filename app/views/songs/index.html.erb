@@ -3,10 +3,17 @@
 	<% @songs.each do |song| %>
     	<%= link_to song_path(song.id) do %>
     		<div class="row">
-       			<div class = "song-index">
-		 			<%= song.name %>
-		 			<%= song.artist %></br>
-		 			<%= song.description %>
+       			<div class="col-md-9">
+       				<div class="col-md-4 pucture_field">
+       					<%= image_tag song.image.to_s, size: '200x120' %>
+       				</div>
+       				<div class="col-md-8 name_space">
+		 				<strong><%= song.name %></br></strong>
+		 				<%= song.artist %></br>
+		 				<div class = "description_field">
+		 					<%= song.description %>
+		 				</div>
+		 			</div>
 				</div>
 			</div>
 		<% end %>

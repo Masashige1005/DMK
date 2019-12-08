@@ -1,0 +1,15 @@
+<% if user.id != current_user.id %>
+  <div class="collection-item">
+<!--     現在のユーザーが対象のユーザーをフォローしてない時->「フォローするボタン」を設置 -->
+    <% unless current_user.following?(user) %>
+      <div class="action">
+         <%= link_to 'フォローする' ,follow_user_path(user.id),method: :post, class: "btn btn-primary" ,remote: true %>
+      </div>
+<!--     現在のユーザーが対象のユーザーをフォローしてる時->「フォロー解除ボタン」を設置
+ -->    <% else %>
+      <div class="action">
+         <%= link_to 'フォローを解除する' ,unfollow_user_path(user.id), method: :post,class: "btn btn-danger",remote: true %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -2,6 +2,9 @@ class Song < ApplicationRecord
 require 'google/apis/youtube_v3'
 has_many :comments
 has_many :favorites, dependent: :destroy
+belongs_to :user
+
+is_impressionable
 
 # 商品にいいね
   def good(user)

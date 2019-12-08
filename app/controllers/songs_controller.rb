@@ -1,6 +1,6 @@
-require 'google/apis/youtube_v3'
-
 class SongsController < ApplicationController
+	# 曲詳細の閲覧数をカウント
+	impressionist :actions=> [:show]
 
 	def index
 		@songs = Song.all
@@ -14,14 +14,35 @@ class SongsController < ApplicationController
 
 	def new
 		@song = Song.new
+		# searchに値が入ってたらAPIを叩く
 		if (query = params[:search]).present?
 			@data = find_videos(query)
 		end
 	end
 
-	private
+	def create
+		@song = Song.new(song_params)
+		@song.user_id = current_user.id
+		@song.vid = song_params[:vid]
+		@song.name = song_params[:name]
+		@song.image = song_params[:image]
+		if @song.save
+			redirect_to song_path(@song.id)
+		else
+			@song = Song.new(song_params)
+			render :new
+		end
+	end
 
-	def find_videos(keyword, after: 1.months.ago, before: Time.now)
+	# 検索機能
+	def search_results
+      @q = Song.search(search_params)
+      @songs = @q.result(distinct: true)
+	end
+
+	private
+	# Youtube data v3の動画検索は以下の処理でやってます。
+	def find_videos(keyword, after: 10.years.ago, before: Time.now)
 	    service = Google::Apis::YoutubeV3::YouTubeService.new
 	    service.key = ENV['GOOGLE_API_KEY']
 
@@ -29,8 +50,10 @@ class SongsController < ApplicationController
 	    opt = {
 	      q: keyword,
 	      type: 'video',
+	      # 検索結果はキーワードの関連性の高い上位1件のみ取得します。
 	      max_results: 1,
-	      order: :viewCount,
+	      # キーワードと関連性の高い順で絞り込み
+	      order: :relevance,
 	      page_token: next_page_token,
 	      published_after: after.iso8601,
 	      published_before: before.iso8601
@@ -38,10 +61,11 @@ class SongsController < ApplicationController
 	    service.list_searches(:snippet, opt)
 	end
 
-
-
-	private
 	def song_params
-		params.require(:song).permit(:name, :artist, :description)
+		params.require(:song).permit(:name, :artist, :description, :vid, :user_id, :image)
 	end
+
+	def search_params
+      params.require(:q).permit(:sorts, :name_or_artist_cont )
+    end
 end

@@ -20,6 +20,7 @@
                 <li><%= link_to '投稿', new_song_path  %></li>
               </ul>
             </div>
+            <div class="list2"><%= render 'share/seach_form' %></div>
           </div>
         </nav>
       <!-- ユーザー がログインしていなかった場合 -->
@@ -43,6 +44,7 @@
                 <li><%= link_to '新規登録',new_user_registration_path%></li>
               </ul>
             </div>
+            <div class="list2"><%= render 'share/seach_form' %></div>
           </div>
         </nav>
       <% end %>

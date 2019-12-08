@@ -3,16 +3,14 @@
 	<%= @song.name %>
 	<%= @song.artist %>
 
-
-
 	<div class = "song_description">
 		<%= @song.description %>
 	</div>
 
-
 	<div class = "song_video">
-		<iframe width="700" height="410" src="https://www.youtube.com/embed/<%= @song.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe width="700" height="410" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
+	閲覧数: <%= @song.impressionist_count %>
 	<div class = "comment-box">
 		<div class ="contents row">
 			<div id="comments_area">
