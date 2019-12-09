@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :comments
   has_many :songs
 
+  has_many :communities, through: :community_users
+  has_many :community_users
+
   acts_as_followable # フォロワー機能
   acts_as_follower   # フォロー機能
 end

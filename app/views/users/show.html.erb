@@ -1,6 +1,6 @@
 <div class = "container">
-	<%= link_to @user.follow_count, following_user_path(@user.id) %>
-	<%= link_to @user.followers_count, followed_user_path(@user.id) %>
+	フォロー: <%= link_to @user.follow_count, following_user_path(@user.id) %>
+	フォロワー: <%= link_to @user.followers_count, followed_user_path(@user.id) %>
 	<h2>お気に入り一覧</h2>
 	<div class="infinite-list jscroll">
 		<% @favorites.each do |favorite| %>

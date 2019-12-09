@@ -7,6 +7,7 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.text :description, null: false
       t.integer :user_id, null: false
       t.text :image
+      t.integer :impressions_count, default: 0
 
       t.timestamps
     end

@@ -4,6 +4,10 @@ class SongsController < ApplicationController
 
 	def index
 		@songs = Song.all
+		# ランキング(いいね)
+		@all_ranks = Song.find(Favorite.group(:song_id).order('count(song_id) desc').limit(3).pluck(:song_id))
+		# ランキング(閲覧数)
+		@view_ranks = Song.order('impressions_count DESC').limit(3)
 	end
 
 	def show

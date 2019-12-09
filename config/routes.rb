@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'communities/index'
+  get 'communities/show'
+  get 'communities/create'
+  get 'communities/destroy'
   get 'favorites/create'
   get 'comments/create'
   get 'comment/create'
