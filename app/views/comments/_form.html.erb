@@ -1,8 +1,10 @@
 <%= form_with(model: [song, comment] ) do |form| %>
-  <div id = "comment-field">
-    <%= form.text_area :content, size: "30x1" %>
-  </div>
-  <div class="actions">
-    <%= form.submit "コメントをする" %>
+  <div class = "comment_form">
+   <div id = "comment-field">
+     <%= form.text_area :content, size: "25x1" %>
+   </div>
+   <div class="actions">
+     <%= form.submit "送信" %>
+   </div>
   </div>
 <% end %>

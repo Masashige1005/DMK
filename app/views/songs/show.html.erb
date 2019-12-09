@@ -1,27 +1,47 @@
-
 <div class = "container">
-	<%= @song.name %>
-	<%= @song.artist %>
+	<div class="row song-info">
+		<div class="col-sm-4">
+			<%= @song.name %>
+		</div>
+		<div class="col-sm-3">
+			<%= @song.artist %>
+		</div>
+		<div class = "col-sm-5 favorite_field">
+			<%= render "favorites/favorite", song: @song %>
+		</div>
+	</div>
 
 	<div class = "song_description">
 		<%= @song.description %>
 	</div>
 
-	<div class = "song_video">
-		<iframe width="700" height="410" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
-	閲覧数: <%= @song.impressionist_count %>
-	<div class = "comment-box">
-		<div class ="contents row">
-			<div id="comments_area">
-      		<!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-      		<%= render partial: 'comments/index', locals: { comments: @comments } %>
-    		</div>
-    		<% if user_signed_in? %>
-      		<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-      			<%= render partial: 'comments/form', locals: { comment: @comment, song: @song } %>
-   			<% end %>
+	<div class="row video_field">
+		<div class = "col-sm-8 song_video">
+			<iframe width="700" height="410" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+		<div class = "col-sm-4 comment-box">
+			<div class ="contents row">
+				<div id = "comments_area" class = "infinite-list jscroll">
+<!-- 投稿されたコメント一覧を曲詳細ページに表示するためのrender -->
+      				<%= render partial: 'comments/index', locals: { comments: @comments } %>
+      				<%= paginate @comments %>
+    			</div>
+    			<% if user_signed_in? %>
+<!-- コメント入力欄を曲詳細ページに表示するためのrender -->
+      				<%= render partial: 'comments/form', locals: { comment: @comment, song: @song } %>
+   				<% end %>
+  			</div>
   		</div>
   	</div>
-  	<%= render "favorites/favorite", song: @song %>
+  	閲覧数: <%= @song.impressionist_count %>
+
+  	<div class = "artist-songs_box">
+  		<% @artists.each do |artist| %>
+  			<div class = "artist_song">
+  				<%= link_to song_path(artist.id) do %>
+  					<%= image_tag artist.image.to_s, size: '100x60' %>
+  				<% end %>
+  			</div>
+  		<% end %>
+  	</div>
 </div>

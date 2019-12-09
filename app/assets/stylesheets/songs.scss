@@ -5,3 +5,40 @@
 nav.pagination {
   display: none;
 }
+
+.song-info{
+	font-size:20px;
+	margin:10px;
+}
+
+.favorite_field{
+	font-size:15px;
+}
+
+.song_description{
+	margin-bottom:10px;
+}
+
+.infinite-list{
+	margin-top:40px;
+}
+
+.artist-songs{
+
+}
+
+.artist-songs_box{
+	max-height:100px;
+	max-width:300px;
+	overflow: auto;
+    white-space: nowrap;
+
+}
+
+.artist_song{
+	margin-left:20px;
+	margin-right:20px;
+	overflow: auto;
+    white-space: nowrap;
+    display:inline-block;
+}

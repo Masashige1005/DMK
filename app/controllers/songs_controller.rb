@@ -9,7 +9,8 @@ class SongsController < ApplicationController
 	def show
 		@song = Song.find(params[:id])
 		@comment = Comment.new
-    	@comments = @song.comments
+    	@comments = @song.comments.page(params[:page]).per(12)
+    	@artists = Song.where(artist: @song.artist)
 	end
 
 	def new
