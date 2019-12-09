@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCommunityUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :community_users do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   def create
     @song = Song.find(params[:song_id])
@@ -11,7 +13,8 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:content, :post_id, :user_id)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:content, :post_id, :user_id)
+  end
 end
