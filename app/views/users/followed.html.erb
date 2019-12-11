@@ -1,5 +1,5 @@
 <% @follows.each do |followed| %>
 
-<%= link_to followed.name, user_path(followed.id) %>
+<%= link_to followed.user.name, user_path(followed.user.id) %>
 
 <% end %>

@@ -1,6 +1,7 @@
 <div class = "container">
-	フォロー: <%= link_to @user.follow_count, following_user_path(@user.id) %>
+	フォロー: <%= link_to @user.following_by_type_count('user'), following_user_path(@user.id) %>
 	フォロワー: <%= link_to @user.followers_count, followed_user_path(@user.id) %>
+
 	<h2>お気に入り一覧</h2>
 	<div class="infinite-list jscroll">
 		<% @favorites.each do |favorite| %>
@@ -13,6 +14,7 @@
 		<% end %>
 		<%= paginate @favorites %>
 	</div>
+
 	<h2>投稿曲一覧</h2>
 	<div class="infinite-list jscroll">
 		<% @songs.each do |song| %>
@@ -23,10 +25,36 @@
 				<% end %>
 			</div>
 		<% end %>
+		<%= paginate @favorites %>
+	</div>
+
+
+	<h2>参加しているコミュニティ一覧</h2>
+	<div class="infinite-list jscroll">
+		<% @communities.each do |community| %>
+			<div class = "community_user">
+				<%= link_to community_path(community.id) do %>
+					<%= community.name %>
+				<% end %>
+			</div>
+		<% end %>
 	</div>
 	<%= paginate @favorites %>
 
 	<div id="user-<%= @user.id %>" class="collection-item">
     	<%= render 'users/follow', user: @user %>
 	</div>
+
+	<%= form_for(@user, url: user_path(@user.id)) do |f| %>
+		<h3 class = "name">Name</h3>
+			<%= f.text_field :name %>
+
+		<h3 class = "introduction">Introduction</h3>
+			<%= f.text_area :introduction %>
+
+		<h3>Image</h3>
+			<%= f.attachment_field :image %>
+
+		<%= f.submit '変更する' %>
+	<% end %>
 </div>

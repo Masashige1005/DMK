@@ -1,0 +1,7 @@
+<div class = "container">
+	<%= form_for(@community, url: communities_path, html:{method: "post" }) do |f| %>
+
+	<%= f.text_field :name %>
+	<%= f.text_area :description %>
+	<%= f.submit '作成' %>
+<% end %>

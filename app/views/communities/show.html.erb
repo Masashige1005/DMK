@@ -1,2 +1,4 @@
-<h1>Communities#show</h1>
-<p>Find me in app/views/communities/show.html.erb</p>
+<%= @community.name %>
+<div id="community-<%= @community.id %>" class="collection-item">
+    <%= render 'communities/follow', community: @community %>
+</div>

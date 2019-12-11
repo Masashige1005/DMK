@@ -5,4 +5,9 @@ class Community < ApplicationRecord
   has_many :community_users
   # communityが更新された際に同時にcommunity_usersも更新
   accepts_nested_attributes_for :community_users
+
+  acts_as_follower   # フォロー機能
+  acts_as_followable # フォロワー機能
+
+  attachment :image
 end

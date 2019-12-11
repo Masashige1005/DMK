@@ -17,7 +17,8 @@
                 <li><%= link_to '楽曲一覧', root_path %></li>
                 <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
                 <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete  %></li>
-                <li><%= link_to '投稿', new_song_path  %></li>
+                <li><%= link_to '投稿', new_song_path %></li>
+                <li><%= link_to 'コミュニティ一覧', communities_path  %></li>
               </ul>
             </div>
             <div class="list2"><%= render 'share/seach_form' %></div>

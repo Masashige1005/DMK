@@ -1,2 +1,10 @@
-<h1>Communities#index</h1>
-<p>Find me in app/views/communities/index.html.erb</p>
+<h1>コミュニティ一覧</h1>
+<%= link_to "コミュニティ作成", new_community_path, class: 'btn btn-default' %>
+<% @communities.each do |community| %>
+ <div class = "community-index">
+  <%= link_to community_path(community.id) do %>
+   <%= community.name %>
+  <% end %>
+  <%= community.description %>
+ </div>
+<% end %>

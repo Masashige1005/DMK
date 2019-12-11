@@ -98,6 +98,10 @@ gem 'impressionist'
 # フォロー・フォロワー
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
 
+# 画像投稿
+gem "refile", github: 'refile/refile', require: "refile/rails"
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+
 group :production, :staging do
   gem 'mysql2'
 end
