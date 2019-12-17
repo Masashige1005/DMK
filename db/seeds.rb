@@ -12,7 +12,7 @@ User.create!(name: 'aaa',
              email: 'aa@aa',
              password: 'aaaaaa',
              introduction: 'aaaaaa',
-             image_id: '11')
+             profile_image_id: 'bbbbb')
 
 20.times do |_n|
   Song.create!(name: Faker::Music::GratefulDead.song,

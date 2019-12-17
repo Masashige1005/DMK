@@ -19,10 +19,6 @@ nav.pagination {
 	margin-bottom:10px;
 }
 
-.infinite-list{
-	margin-top:40px;
-}
-
 .artist-songs{
 
 }
@@ -32,7 +28,6 @@ nav.pagination {
 	max-width:300px;
 	overflow: auto;
     white-space: nowrap;
-
 }
 
 .artist_song{
@@ -41,4 +36,85 @@ nav.pagination {
 	overflow: auto;
     white-space: nowrap;
     display:inline-block;
+}
+
+.description_field{
+	font-size:15px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	display:webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.ranking{
+    display: inline-block;
+    margin:30px 20px;
+}
+
+.card {
+  display: flex;
+  border-radius: 0.25rem;
+  box-shadow: 0 3px 5px white;
+}
+
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+}
+
+.infinte_song{
+	margin-top:15px;
+	margin-bottom:15px;
+	max-height:600px;
+	max-width:930px;
+	overflow: scroll;
+}
+
+.index_field{
+	max-widht:940px;
+}
+
+.name_field{
+	max-width:450px;
+	font-size:18px;
+	margin: 0 -95px;
+	margin-top:15px;
+}
+
+.locate_song{
+	margin:20px;
+}
+
+ul li {
+    list-style: none;
+}
+
+label {
+    margin-right: 10px;
+    width:100px;
+    float: left;
+}
+
+ul {
+    width: 500px;
+}
+
+.song_submit{
+  margin-left:90px;
+}
+
+.input-field{
+	margin-top:30px;
+}
+
+.infinite-list{
+	max-height:300px;
+	max-width:700px;
+	overflow: scroll;
 }

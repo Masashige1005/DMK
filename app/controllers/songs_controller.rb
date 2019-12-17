@@ -7,7 +7,7 @@ class SongsController < ApplicationController
   def index
     @songs = Song.all
     # ランキング(いいね)
-    @all_ranks = Song.find(Favorite.group(:song_id).order('count(song_id) desc').limit(3).pluck(:song_id))
+    @favorite_ranks = Song.find(Favorite.group(:song_id).order('count(song_id) desc').limit(3).pluck(:song_id))
     # ランキング(閲覧数)
     @view_ranks = Song.order('impressions_count DESC').limit(3)
   end
@@ -24,6 +24,7 @@ class SongsController < ApplicationController
     # searchに値が入ってたらAPIを叩く
     if (query = params[:search]).present?
       @data = find_videos(query)
+      @lyrics = search_track(query)
     end
   end
 
@@ -59,6 +60,22 @@ class SongsController < ApplicationController
       published_before: before.iso8601
     }
     service.list_searches(:snippet, opt)
+  end
+
+  def search_track(keyword)
+    MusixMatch::API::Base.api_key = ENV['MISIX_API_KEY']
+    result = MusixMatch.search_track(:q => keyword, :f_has_lyrics => 1)
+    if result.status_code == 200 && lyrics = result.track_list.first
+      lyrics.track_id
+      find_lyrics(lyrics.track_id)
+    end
+  end
+
+  def find_lyrics(track_id)
+    result = MusixMatch.get_lyrics(track_id)
+    if result.status_code == 200 && lyrics = result.lyrics
+      lyrics
+    end
   end
 
   # 検索機能

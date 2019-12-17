@@ -1,5 +1,11 @@
 <% comments.each do |comment| %>
-  <% unless comment.id.nil? %>
-    <p><%= comment.content %></p>
-  <% end %>
+	<% unless comment.id.nil? %>
+		<div class = "comment-box">
+			<%= link_to user_path(comment.user.id) do %>
+				<%= image_tag attachment_url(comment.user, :profile_image,		 :fill, 50, 45, format: "jpg") %>
+			<% end %>
+			<p class = "comment-content"><%= comment.content %></p></br>
+		</div>
+	<% end %>
 <% end %>
+

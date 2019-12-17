@@ -2,6 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.comment_form{
+	display:inline-block;
+	position: absolute;
+	margin-left:10px;
+	margin-top:-50px;
+}
+
 .actions{
-	display:inline;
+	display:inline-block;
+}
+
+.comment_index{
+	height:400px;
+	width:900px;
+	margin-top:20px;
+	margin-left:20px;
+}
+
+.comment_title{
+	margin-left:20px;
+}
+
+
+.comments_area{
+	width:400px;
+}
+
+.comment-text{
+	display:inline-block;
+}
+
+.comment-content{
+	display:inline-block;
+}
+
+.comment-box{
+	margin-bottom:10px;
 }

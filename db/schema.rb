@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_132218) do
   create_table "communities", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
-    t.string "image", null: false
+    t.string "community_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_132218) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.string "introduction"
-    t.string "image_id"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

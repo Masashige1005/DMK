@@ -2,6 +2,8 @@
 
 class Song < ApplicationRecord
   require 'google/apis/youtube_v3'
+  require 'musix_match'
+
   has_many :comments
   has_many :favorites, dependent: :destroy
   belongs_to :user

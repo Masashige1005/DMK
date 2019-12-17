@@ -1,5 +1,8 @@
-<% @follows.each do |following| %>
-
-<%= link_to following.name, user_path(following.id) %>
-
-<% end %>
+<div class = "container">
+	<h1>フォロー一覧</h1>
+	<% @follows.each do |following| %>
+		<%= image_tag attachment_url(following, :profile_image, :fill,90, 80, format: "jpg") %>
+		<strong><%= link_to following.name, user_path(following.id) %></strong>
+		<%= following.introduction %>
+	<% end %>
+</div>

@@ -1,7 +1,21 @@
 <div class = "container">
+	<h1>コミュニティ作成</h1>
 	<%= form_for(@community, url: communities_path, html:{method: "post" }) do |f| %>
-
-	<%= f.text_field :name %>
-	<%= f.text_area :description %>
-	<%= f.submit '作成' %>
+	<ul>
+		<li class = "community_form">
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</li>
+		<li class = "community_form">
+			<%= f.label :description %>
+			<%= f.text_area :description %>
+		</li>
+		<li class = "community_form">
+			<%= f.label :image %>
+			<%= f.attachment_field :community_image %>
+		</li>
+		<li class = "community_create">
+			<%= f.submit '作成' %>
+		</li>
+	</ul>
 <% end %>

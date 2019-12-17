@@ -20,20 +20,14 @@
 			<iframe width="700" height="410" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 		<div class = "col-sm-4 comment-box">
-			<div class ="contents row">
-				<div id = "comments_area" class = "infinite-list jscroll">
-<!-- 投稿されたコメント一覧を曲詳細ページに表示するためのrender -->
-      				<%= render partial: 'comments/index', locals: { comments: @comments } %>
-      				<%= paginate @comments %>
-    			</div>
-    			<% if user_signed_in? %>
-<!-- コメント入力欄を曲詳細ページに表示するためのrender -->
-      				<%= render partial: 'comments/form', locals: { comment: @comment, song: @song } %>
-   				<% end %>
-  			</div>
-  		</div>
+  	</div>
   	</div>
   	閲覧数: <%= @song.impressionist_count %>
+
+  	<div class = "song_user">
+  		<p>投稿者: <%= link_to @song.user.name, user_path(@song.user_id) %></p>
+  		<p><%= @song.user.introduction %></p>
+  	</div>
 
   	<div class = "artist-songs_box">
   		<% @artists.each do |artist| %>
@@ -44,4 +38,19 @@
   			</div>
   		<% end %>
   	</div>
+
+    <div class ="contents row">
+      <div class = "comment_index">
+        <h2 class = "comment_title">コメント</h2>
+        <div id = "comments_area" class = "infinite-list jscroll">
+<!-- 投稿されたコメント一覧を曲詳細ページに表示するためのrender -->
+          <%= render partial: 'comments/index', locals: { comments: @comments, user: @user } %>
+            <%= paginate @comments %>
+        </div>
+      </div>
+      <% if user_signed_in? %>
+<!-- コメント入力欄を曲詳細ページに表示するためのrender -->
+        <%= render partial: 'comments/form', locals: { comment: @comment, song: @song } %>
+      <% end %>
+    </div>
 </div>

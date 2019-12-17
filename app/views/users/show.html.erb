@@ -1,60 +1,83 @@
 <div class = "container">
-	フォロー: <%= link_to @user.following_by_type_count('user'), following_user_path(@user.id) %>
+  <% if @user.id == current_user.id %>
+    フォロー: <%= link_to @user.follow_count, following_user_path(@user.id) %>
 	フォロワー: <%= link_to @user.followers_count, followed_user_path(@user.id) %>
-
-	<h2>お気に入り一覧</h2>
-	<div class="infinite-list jscroll">
-		<% @favorites.each do |favorite| %>
-			<div class = "favorite_box">
-  				<%= link_to song_path(favorite.song.id) do %>
-  					<%= image_tag favorite.song.image.to_s, size: '80x50' %>
-    				<%= favorite.song.name %>
-    			<% end %>
-    		</div>
+  <% end %>
+  <div id="user-<%= @user.id %>" class="collection-item">
+    <%= render 'users/follow', user: @user %>
+  </div>
+  <div class = "row">
+ 	<div class="col-md-6">
+	  <h2 class = "Submitted_title">お気に入り一覧</h2>
+	  <% if @favorites.empty? %>
+	    <p>お気に入りにしている曲はありません</p>
+	  <% end %>
+	  <div class="favorite_infinte">
+	    <% @favorites.each do |favorite| %>
+		  <div class = "infinite_box">
+  		    <%= link_to song_path(favorite.song.id) do %>
+  		  	  <%= image_tag favorite.song.image.to_s,   size: '80x50' %>
+    	  	  <%= favorite.song.name %>
+    	    <% end %>
+    	  </div>
 		<% end %>
-		<%= paginate @favorites %>
+	  </div>
 	</div>
-
-	<h2>投稿曲一覧</h2>
-	<div class="infinite-list jscroll">
-		<% @songs.each do |song| %>
-			<div class = "song_user">
-				<%= link_to song_path(song.id) do %>
-					<%= image_tag song.image.to_s, size: '80x50' %>
-					<%= song.name %>
-				<% end %>
-			</div>
+	<div class="col-md-6">
+	  <h2 class = "Submitted_title">投稿曲一覧</h2>
+	  <% if @songs.empty? %>
+       <p>投稿した曲はありません</p>
+	  <% end %>
+	  <div class = "song_infinte">
+        <% @songs.each do |song| %>
+		  <div class = "infinite_box">
+			<%= link_to song_path(song.id) do %>
+			  <%= image_tag song.image.to_s, size: '80x50' %>
+			  <%= song.name %>
+			<% end %>
+		  </div>
 		<% end %>
-		<%= paginate @favorites %>
+	  </div>
 	</div>
-
-
-	<h2>参加しているコミュニティ一覧</h2>
-	<div class="infinite-list jscroll">
-		<% @communities.each do |community| %>
-			<div class = "community_user">
-				<%= link_to community_path(community.id) do %>
-					<%= community.name %>
-				<% end %>
-			</div>
+  </div>
+  <div class = "row">
+	<h2 class = "Submitted_title">参加しているコミュニティ一覧</h2>
+	<div class = "community-empty">
+	  <% if @user.communities.empty? %>
+		<p>参加しているコミュニティはありません</p>
+	  <% end %>
+	</div>
+	<% @user.communities.each do |community| %>
+	  <div class = "community_user">
+		<%= link_to community_path(community.id) do %>
+		  <%= image_tag attachment_url(community, :community_image, :fill, 80, 50, format: "jpg") %>
+		  <%= community.name %>
 		<% end %>
-	</div>
-	<%= paginate @favorites %>
-
-	<div id="user-<%= @user.id %>" class="collection-item">
-    	<%= render 'users/follow', user: @user %>
-	</div>
-
-	<%= form_for(@user, url: user_path(@user.id)) do |f| %>
-		<h3 class = "name">Name</h3>
-			<%= f.text_field :name %>
-
-		<h3 class = "introduction">Introduction</h3>
-			<%= f.text_area :introduction %>
-
-		<h3>Image</h3>
-			<%= f.attachment_field :image %>
-
-		<%= f.submit '変更する' %>
+	  </div>
 	<% end %>
+  </div>
+  <div class = "row">
+	<h2 class = "Submitted_title">ユーザー情報編集</h2>
+	<%= form_for(@user) do |f| %>
+	  <div class = "profile_edit">
+		<ul>
+		  <li class = "profile_field">
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		  </li>
+		  <li class = "profile_field">
+			<%= f.label :introduction %>
+			<%= f.text_area :introduction %>
+		  </li>
+		  <li class = "profile_field">
+			<%= f.label :image %>
+			<%= f.attachment_field :profile_image %>
+		  </li>
+		  <li class = "profile_submit">
+			<%= f.submit '変更する' %>
+		  </li>
+		</ul>
+	  </div>
+	<% end %>
+  </div>
 </div>

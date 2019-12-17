@@ -1,51 +1,57 @@
 <div class = "container">
-	<% @all_ranks.each.with_index(1) do |favorite, i| %>
-        <div class="row">
-        	<div class="col-md-4">
-            	<p class="ranks"><%= "#{i}位" %></p>
-            	<div class="card">
-            		<%= link_to song_path(favorite.id) do %>
-              			<%= image_tag favorite.image.to_s, size: '200x120' %>
-              			<div class="card-body">
-                			<h4 class="card-title"><%= favorite.name %></h4>
-              			</div>
-              		<% end %>
-            	</div>
-          	</div>
+  <h1>お気に入りランキング</h1>
+	<% @favorite_ranks.each.with_index(1) do |favorite, i| %>
+    <div class = "ranking">
+      <div class="row">
+        <div class="col-md-4">
+          <p class="ranks"><%= "#{i}位" %></p>
+          <div class="card">
+            <%= link_to song_path(favorite.id) do %>
+            <%= image_tag favorite.image.to_s, size: '200x120' %>
+              <div class="card-body">
+                <h4 class="card-title"><%= favorite.name %></h4>
+              </div>
+            <% end %>
           </div>
-    <% end %>
-    <% @view_ranks.each.with_index(1) do |view, i| %>
-    <div class="row">
-        	<div class="col-md-4">
-            	<p class="ranks"><%= "#{i}位" %></p>
-            	<div class="card">
-            		<%= link_to song_path(view.id) do %>
-              			<%= image_tag view.image.to_s, size: '200x120' %>
-              			<div class="card-body">
-                			<h4 class="card-title"><%= view.name %></h4>
-              			</div>
-              		<% end %>
-            	</div>
-          	</div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <h1>閲覧数ランキング</h1>
+  <% @view_ranks.each.with_index(1) do |view, i| %>
+    <div class = "ranking">
+      <div class="row">
+        <div class="col-md-4">
+          <p class="ranks"><%= "#{i}位" %></p>
+          <div class="card">
+            <%= link_to song_path(view.id) do %>
+              <%= image_tag view.image.to_s, size: '200x120' %>
+              <div class="card-body">
+                <h4 class="card-title"><%= view.name %></h4>
+              </div>
+            <% end %>
           </div>
-    <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 	<h1>曲一覧</h1>
-	<% @songs.each do |song| %>
-    	<%= link_to song_path(song.id) do %>
-    		<div class="row">
-       			<div class="col-md-9">
-       				<div class="col-md-4 pucture_field">
-       					<%= image_tag song.image.to_s, size: '200x120' %>
-       				</div>
-       				<div class="col-md-8 name_space">
-		 				<strong><%= song.name %></br></strong>
-		 				<%= song.artist %></br>
-		 				<div class = "description_field">
-		 					<%= song.description %>
-		 				</div>
-		 			</div>
-				</div>
-			</div>
-		<% end %>
-	<% end %>
+  <div class = "infinte_song">
+	  <% @songs.each do |song| %>
+      <div class="row">
+        <%= link_to song_path(song.id) do %>
+         	<div class="col-md-4 pucture_field">
+         		<%= image_tag song.image.to_s, size: '200x120' %>
+         	</div>
+         	<div class="col-md-6 name_field">
+	  	 			<strong><%= song.name %></br></strong>
+	  	 			<%= song.artist %></br>
+	  	 			<div class = "description_field">
+	  	 				<%= song.description %>
+	  	 			</div>
+	  	 		</div>
+	  	  <% end %>
+      </div>
+	  <% end %>
+  </div>
 </div>

@@ -1,4 +1,23 @@
-<%= @community.name %>
-<div id="community-<%= @community.id %>" class="collection-item">
-    <%= render 'communities/follow', community: @community %>
+<div class = "container">
+  <div class = community_field>
+    <h1><strong><%= @community.name %></strong></h1>
+    <p><%= @community.description %></p>
+    <div id="community-<%= @community.id %>" class="collection-item">
+      <%= render 'communities/join', community: @community, user: @user %>
+    </div>
+  </div>
+
+  <div class = "member_field">
+    <h2>メンバー一覧</h2>
+    <div class = "community_member">
+      <% @members.each do |member| %>
+        <div class = "member_box">
+      	  <%= link_to user_path(member.id) do %>
+      	    <%= image_tag attachment_url(member, :profile_image, :fill, 80, 50, format: "jpg") %>
+            <p class = "member_name"><%= member.name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

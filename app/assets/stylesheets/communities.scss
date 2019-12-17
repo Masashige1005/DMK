@@ -1,3 +1,74 @@
 // Place all the styles related to the communities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul li {
+    list-style: none;
+}
+
+label {
+    margin-right: 10px;
+    width:100px;
+    float: left;
+}
+
+ul {
+    width: 500px;
+}
+
+.community_form{
+  margin-bottom:20px;
+}
+
+.community_create{
+	margin-left:100px;
+}
+
+.community-title{
+	display:inline-block;
+}
+
+.community_button{
+	display:inline-block;
+	margin-left:250px;
+}
+
+.community-index{
+    margin-bottom:20px;
+    overflow:scroll;
+}
+
+.community-field{
+    display:inline-block;
+    margin-top:10px;
+    margin-left:10px;
+    font-size:18px;
+}
+
+.community_field{
+    dispaly:inline-block;
+}
+
+.action{
+    margin-top:-70px;
+}
+
+.community_member{
+  max-height:300px;
+  max-width:450px;
+  overflow:scroll;
+  margin-top:10px;
+}
+
+.member_box{
+    margin-bottom:10px;
+    dispaly:inline-block;
+    margin-left:20px;
+}
+.member_field{
+    margin-top:40px;
+}
+.member_name{
+    display:inline-block;
+    margin-left:10px;
+}

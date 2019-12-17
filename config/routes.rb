@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'community_users/create'
+  get 'community_users/destroy'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'songs#index'
@@ -16,8 +18,7 @@ Rails.application.routes.draw do
     get 'followed', on: :member
   end
   resources :communities, only: %i[index show new create destroy] do
-    post 'follow', on: :member
-    post 'unfollow', on: :member
+    resources :community_users, only: %i[create destroy]
   end
 
   get 'search', to: 'songs#search_results', via: %i[get post]

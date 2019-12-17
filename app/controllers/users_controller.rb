@@ -3,9 +3,8 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show update follow unfollow following followed]
   def show
-    @favorites = @user.favorites.page(params[:page]).per(5)
-    @songs = @user.songs.page(params[:page]).per(5)
-    @communities = @user.following_communities.page(params[:page]).per(5)
+    @favorites = @user.favorites
+    @songs = @user.songs
   end
 
   def update
@@ -28,7 +27,7 @@ class UsersController < ApplicationController
 
   def following
     # このユーザーがフォローしているユーザーを取得
-    @follows = @user.follows_by_type('user')
+    @follows = @user.all_following
   end
 
   def followed
@@ -43,6 +42,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :introduction, :user_image, :email)
+  	params.require(:user).permit(:name, :introduction, :profile_image, :email)
   end
 end

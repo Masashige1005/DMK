@@ -1,13 +1,13 @@
 <div class="collection-item">
 <!--現在のユーザーが対象のコミュニティに参加していないとき->「参加するするボタン」を設置 -->
-    <% unless current_user.following?(community) %>
+    <% unless community.join?(current_user) %>
       <div class="action">
-         <%= link_to '参加する' ,follow_community_path(community.id),method: :post, class: "btn btn-primary" ,remote: true %>
+         <%= link_to '参加する' ,community_community_users_path(community.id),method: :post, class: "btn btn-primary" ,remote: true %>
       </div>
 <!--     現在のユーザーが対象のコミュニティに参加している時->「参加を解除するボタン」を設置-->
     <% else %>
       <div class="action">
-         <%= link_to '参加を解除する', unfollow_community_path(community.id), method: :post,class: "btn btn-danger",remote: true %>
+         <%= link_to '参加を解除する', community_community_user_path(community.id, user.id), method: :delete,class: "btn btn-danger",remote: true %>
       </div>
     <% end %>
  </div>

@@ -1,10 +1,19 @@
-<h1>コミュニティ一覧</h1>
-<%= link_to "コミュニティ作成", new_community_path, class: 'btn btn-default' %>
-<% @communities.each do |community| %>
- <div class = "community-index">
-  <%= link_to community_path(community.id) do %>
-   <%= community.name %>
-  <% end %>
-  <%= community.description %>
- </div>
-<% end %>
+<div class = "container">
+	<div class = "community-title">
+		<h1>コミュニティ一覧</h1>
+	</div>
+	<div class = "community_button">
+		<%= link_to "コミュニティ作成", new_community_path, class: 'btn btn-default' %>
+	</div>
+	<% @communities.each do |community| %>
+	 <div class = "community-index">
+	 	<%= link_to community_path(community.id) do %>
+	  		<%= image_tag attachment_url(community, :community_image, :fill,120,100, format: "jpg") %>
+	  	<% end %>
+	  	<div class = "community-field">
+	   		<p class = "community-name">コミュニティ名: <strong><%= link_to community.name, community_path(community.id) %></strong></p>
+	  		<p>紹介文: <%= community.description %></p>
+	  </div>
+	</div>
+	<% end %>
+</div>
