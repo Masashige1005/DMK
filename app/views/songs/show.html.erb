@@ -1,50 +1,65 @@
 <div class = "container">
 	<div class="row song-info">
-		<div class="col-sm-4">
+		<div class="col-sm-6">
 			<%= @song.name %>
 		</div>
 		<div class="col-sm-3">
 			<%= @song.artist %>
 		</div>
-		<div class = "col-sm-5 favorite_field">
+		<div class = "col-sm-3 favorite_field">
 			<%= render "favorites/favorite", song: @song %>
 		</div>
 	</div>
-
 	<div class = "song_description">
 		<%= @song.description %>
 	</div>
 
 	<div class="row video_field">
 		<div class = "col-sm-8 song_video">
-			<iframe width="700" height="410" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<iframe width="730" height="420" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
-		<div class = "col-sm-4 comment-box">
-  	</div>
-  	</div>
-  	閲覧数: <%= @song.impressionist_count %>
+    <div class = "col-sm-4 lyrics_field">
+      <div class = "apple_field">
+        <h3>Apple Music</h3>
+        <p><%= link_to @song.artist, @song.artist_url, target: :_blank %></p>
+        <p><%= link_to @song.name, @song.track_url,target: :_blank %></p>
+      </div>
+      <div class = "genius_field">
+        <h3>Genius</h3>
+        <p>歌詞は<%= link_to 'こちら', @song.lylics_url, target: :_blank, :style=>"color:grey" %>へ</p>
+      </div>
+    </div>
+  </div>
+  <div class = "row post_user">
+    <div class = "col-md-2">
+      <%= attachment_image_tag @song.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size: '50x50' %>
+    </div>
+    <div class = "col-md-2 song_user">
+      <p>投稿者: <%= link_to @song.user.name, user_path(@song.user_id) %></p>
+    </div>
+    <div class="col-md-3 offset-md-1"></div>
+    <div class = "col-md-3">
+      <p>閲覧数: <%= @song.impressionist_count %></p>
+    </div>
+    <div class="col-md-4 offset-md-4"></div>
+  </div>
 
-  	<div class = "song_user">
-  		<p>投稿者: <%= link_to @song.user.name, user_path(@song.user_id) %></p>
-  		<p><%= @song.user.introduction %></p>
-  	</div>
-
-  	<div class = "artist-songs_box">
-  		<% @artists.each do |artist| %>
-  			<div class = "artist_song">
-  				<%= link_to song_path(artist.id) do %>
-  					<%= image_tag artist.image.to_s, size: '100x60' %>
-  				<% end %>
-  			</div>
-  		<% end %>
-  	</div>
+	<div class = "artist-songs_box">
+  	<% @artists.each do |artist| %>
+  		<div class = "artist_song">
+  			<%= link_to song_path(artist.id) do %>
+  				<%= image_tag artist.image.to_s, size: '100x60' %>
+  			<% end %>
+  		</div>
+  	<% end %>
+  </div>
 
     <div class ="contents row">
       <div class = "comment_index">
-        <h2 class = "comment_title">コメント</h2>
+        <h2 class = "comment_title">コメント一覧</h2>
         <div id = "comments_area" class = "infinite-list jscroll">
 <!-- 投稿されたコメント一覧を曲詳細ページに表示するためのrender -->
-          <%= render partial: 'comments/index', locals: { comments: @comments, user: @user } %>
+          <%= render partial: 'comments/index', locals: { comments: @comments, user: @user, song: @song } %>
             <%= paginate @comments %>
         </div>
       </div>

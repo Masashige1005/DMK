@@ -3,9 +3,11 @@
 class SongsController < ApplicationController
   # 曲詳細の閲覧数をカウント
   impressionist actions: [:show]
+  require 'itunes-search-api'
+  skip_before_action :authenticate_user!, only: [:index, :show, :search_results]
 
   def index
-    @songs = Song.all
+    @songs = Song.all.order(id: "DESC")
     # ランキング(いいね)
     @favorite_ranks = Song.find(Favorite.group(:song_id).order('count(song_id) desc').limit(3).pluck(:song_id))
     # ランキング(閲覧数)
@@ -15,16 +17,18 @@ class SongsController < ApplicationController
   def show
     @song = Song.find(params[:id])
     @comment = Comment.new
-    @comments = @song.comments.page(params[:page]).per(12)
+    @comments = @song.comments.page(params[:page]).per(10).order(id: "DESC")
     @artists = Song.where(artist: @song.artist)
   end
 
   def new
     @song = Song.new
     # searchに値が入ってたらAPIを叩く
-    if (query = params[:search]).present?
+    if params[:search].present?
+      query = params[:search]
       @data = find_videos(query)
-      @lyrics = search_track(query)
+      @lylics = find_lylics(query)
+      @ituens = ituens_search(query)
     end
   end
 
@@ -35,8 +39,10 @@ class SongsController < ApplicationController
     @song.name = song_params[:name]
     @song.image = song_params[:image]
     if @song.save
+      flash[:success] = '楽曲が投稿されました'
       redirect_to song_path(@song.id)
     else
+      flash.now[:alert] = '楽曲が投稿できませんでした'
       @song = Song.new(song_params)
       render :new
     end
@@ -62,20 +68,27 @@ class SongsController < ApplicationController
     service.list_searches(:snippet, opt)
   end
 
-  def search_track(keyword)
-    MusixMatch::API::Base.api_key = ENV['MISIX_API_KEY']
-    result = MusixMatch.search_track(:q => keyword, :f_has_lyrics => 1)
-    if result.status_code == 200 && lyrics = result.track_list.first
-      lyrics.track_id
-      find_lyrics(lyrics.track_id)
-    end
-  end
+  def ituens_search(keyword)
+    ITunesSearchAPI.search(
+     :term => keyword,
+     :media => 'music',
+     :lang => 'ja_jp',
+     :limit => '1'
+     ).each do |item|
+       p item
+      @track = item['trackViewUrl']
+      @artist = item['artistViewUrl']
+     end
+   end
 
-  def find_lyrics(track_id)
-    result = MusixMatch.get_lyrics(track_id)
-    if result.status_code == 200 && lyrics = result.lyrics
-      lyrics
-    end
+  def find_lylics(keyword)
+    Genius.access_token = ENV['GENIUS_API_KEY']
+    Genius.text_format = "html"
+    songs = Genius::Song.search(keyword)
+    lylics = songs.first
+    lylics.title
+    lylics.primary_artist.name
+    pp lylics
   end
 
   # 検索機能
@@ -87,7 +100,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:name, :artist, :description, :vid, :user_id, :image)
+    params.require(:song).permit(:name, :artist, :description, :vid, :user_id, :image, :lylics_url, :track_url, :artist_url)
   end
 
   def search_params

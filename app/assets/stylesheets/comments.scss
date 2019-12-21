@@ -7,10 +7,11 @@
 	position: absolute;
 	margin-left:10px;
 	margin-top:-50px;
+
 }
 
 .actions{
-	display:inline-block;
+	margin-left:350px;
 }
 
 .comment_index{
@@ -32,11 +33,34 @@
 .comment-text{
 	display:inline-block;
 }
+.comment_user{
+  margin-top:-70px;
+    margin-left:80px;
 
-.comment-content{
-	display:inline-block;
+}
+.comment_content{
+    margin-top:10px;
+    margin-left:80px;
 }
 
 .comment-box{
-	margin-bottom:10px;
+}
+
+textarea{
+  border:none;
+  border-bottom:solid 2px;
+  background:none;
+  outline: 0;
+  width: 400px;
+  max-height: 200px;
+  resize: none;
+}
+
+.comment-box{
+	margin-left:20px;
+}
+
+.comment_image{
+  margin-top:10px;
+  margin-left:-50px;
 }

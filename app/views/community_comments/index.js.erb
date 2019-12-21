@@ -1,0 +1,2 @@
+$("#comments_area").html("<%= j(render 'index', { community_comments: @community.community_comments.order(id: "DESC") }) %>")
+$("textarea").val('')

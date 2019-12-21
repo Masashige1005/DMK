@@ -19,5 +19,6 @@ User.create!(name: 'aaa',
                artist: Faker::Artist.name,
                description: Faker::Quotes::Shakespeare.as_you_like_it_quote,
                vid: 'btrzs54s1Rc',
-               user_id: 1)
+               user_id: 1,
+               lylics_url: 'https://genius.com/Jonas-blue-rise-lyrics')
 end

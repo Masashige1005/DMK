@@ -1,5 +1,10 @@
 <div class = "container">
-  <h1>お気に入りランキング</h1>
+  <div>
+    <%# app/assets/images %>
+   <%= image_tag 'cheers.jpg', class: 'bg-image' %>
+  </div>
+  <div>
+  <h2 class = "ranking_title">お気に入りランキング</h2>
 	<% @favorite_ranks.each.with_index(1) do |favorite, i| %>
     <div class = "ranking">
       <div class="row">
@@ -17,10 +22,11 @@
       </div>
     </div>
   <% end %>
-  <h1>閲覧数ランキング</h1>
+  </div>
+  <h2 class = "ranking_title">閲覧数ランキング</h2>
   <% @view_ranks.each.with_index(1) do |view, i| %>
     <div class = "ranking">
-      <div class="row">
+      <div class="row impression_ranking">
         <div class="col-md-4">
           <p class="ranks"><%= "#{i}位" %></p>
           <div class="card">
@@ -35,7 +41,7 @@
       </div>
     </div>
   <% end %>
-	<h1>曲一覧</h1>
+	<h2>曲一覧</h2>
   <div class = "infinte_song">
 	  <% @songs.each do |song| %>
       <div class="row">
@@ -43,11 +49,11 @@
          	<div class="col-md-4 pucture_field">
          		<%= image_tag song.image.to_s, size: '200x120' %>
          	</div>
-         	<div class="col-md-6 name_field">
-	  	 			<strong><%= song.name %></br></strong>
-	  	 			<%= song.artist %></br>
+         	<div class="col-md-6 name_index">
+	  	 			  <strong><p class = "index_song"><%= song.name %></p></br></strong>
+	  	 			  <p><%= song.artist %><p></br>
 	  	 			<div class = "description_field">
-	  	 				<%= song.description %>
+	  	 				<p><%= song.description %></p>
 	  	 			</div>
 	  	 		</div>
 	  	  <% end %>

@@ -12,9 +12,14 @@ class User < ApplicationRecord
 
   has_many :community_users
   has_many :communities, through: :community_users
+  has_many :community_comments
 
   acts_as_followable # フォロワー機能
   acts_as_follower   # フォロー機能
 
   attachment :profile_image
+
+  validates :email, presence: true
+  validates :name, presence: true,length: {maximum: 50}
+
 end

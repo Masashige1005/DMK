@@ -102,7 +102,9 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
 gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 
-gem 'musix_match'
+gem "genius", "~> 0.1.1"
+
+gem 'httparty'
 
 group :production, :staging do
   gem 'mysql2'

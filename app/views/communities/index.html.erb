@@ -8,7 +8,7 @@
 	<% @communities.each do |community| %>
 	 <div class = "community-index">
 	 	<%= link_to community_path(community.id) do %>
-	  		<%= image_tag attachment_url(community, :community_image, :fill,120,100, format: "jpg") %>
+	  		<%= attachment_image_tag community, :community_image, :fill,120,100, fallback: "no_image.jpg",size: '120x100' %>
 	  	<% end %>
 	  	<div class = "community-field">
 	   		<p class = "community-name">コミュニティ名: <strong><%= link_to community.name, community_path(community.id) %></strong></p>

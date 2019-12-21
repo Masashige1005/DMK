@@ -17,10 +17,7 @@ nav.pagination {
 
 .song_description{
 	margin-bottom:10px;
-}
-
-.artist-songs{
-
+	max-width:700px;
 }
 
 .artist-songs_box{
@@ -40,22 +37,24 @@ nav.pagination {
 
 .description_field{
 	font-size:15px;
-	text-overflow:ellipsis;
-	overflow:hidden;
-	display:webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
+	margin-top:-40px;
+    p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
 }
 
 .ranking{
     display: inline-block;
     margin:30px 20px;
+    vertical-align: top;
 }
 
 .card {
   display: flex;
   border-radius: 0.25rem;
-  box-shadow: 0 3px 5px white;
 }
 
 .card-body {
@@ -66,6 +65,7 @@ nav.pagination {
 
 .card-title {
   margin-bottom: 0.75rem;
+  font-size:15px;
 }
 
 .infinte_song{
@@ -80,25 +80,23 @@ nav.pagination {
 	max-widht:940px;
 }
 
-.name_field{
+.name_index{
 	max-width:450px;
 	font-size:18px;
 	margin: 0 -95px;
-	margin-top:15px;
 }
 
 .locate_song{
 	margin:20px;
+	color:black;
+	btn btn-primary{
+	  height:10px;
+	}
 }
+
 
 ul li {
     list-style: none;
-}
-
-label {
-    margin-right: 10px;
-    width:100px;
-    float: left;
 }
 
 ul {
@@ -117,4 +115,49 @@ ul {
 	max-height:300px;
 	max-width:700px;
 	overflow: scroll;
+}
+
+.ranking_title{
+margin-bottom:-10px;
+}
+
+.bg-image {
+  width: 1150px;
+  height: 600px;
+}
+
+.lyrics_field{
+	margin-top:50px;
+    display:inline-block;
+}
+
+.apple_field{
+    padding: 0.5em 1em;
+    background: -moz-linear-gradient(#ffb03c, #ff708d);
+    background: -webkit-linear-gradient(#ffb03c, #ff708d);
+    background: linear-gradient(to right, #ffb03c, #ff708d);
+    color: #FFF;
+}
+
+.genius_field{
+    padding: 0.5em 1em;
+    background: -moz-linear-gradient(#ffb03c, #ff708d);
+    background: -webkit-linear-gradient(#ffb03c, #ff708d);
+    background: linear-gradient(to right, #ffb03c, #ff708d);
+    color: #FFF;
+    margin-top:40px;
+}
+
+.index_song{
+  margin-bottom:-15px;
+  border-bottom: 3px double
+}
+
+.song_user{
+	margin-top:15px;
+  margin-left:-80px;
+}
+
+.post_user{
+	margin-top:10px;
 }

@@ -1,0 +1,10 @@
+<%= form_with(url: community_community_comments_path(community.id), model: [community, comment] ) do |form| %>
+  <div class = "com_comment_form">
+   <div id = "comment-field">
+     <%= form.text_area :body, size: "40x3" %>
+   </div>
+   <div class="actions">
+     <%= form.submit("送信",class: 'btn btn-primary my-1 mb-5 px-5') %>
+   </div>
+  </div>
+<% end %>

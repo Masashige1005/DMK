@@ -3,13 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 ul li {
-    list-style: none;
-}
-
-label {
-    margin-right: 10px;
-    width:100px;
-    float: left;
+  list-style: none;
 }
 
 ul {
@@ -17,11 +11,12 @@ ul {
 }
 
 .community_form{
-  margin-bottom:20px;
+  margin-top:30px;
+  margin-bottom:30px;
 }
 
 .community_create{
-	margin-left:100px;
+	margin-left:180px;
 }
 
 .community-title{
@@ -34,41 +29,91 @@ ul {
 }
 
 .community-index{
-    margin-bottom:20px;
-    overflow:scroll;
+  margin-bottom:20px;
+  overflow:scroll;
 }
 
 .community-field{
-    display:inline-block;
-    margin-top:10px;
-    margin-left:10px;
-    font-size:18px;
+  display:inline-block;
+  margin-top:10px;
+  margin-left:10px;
+  font-size:18px;
 }
 
-.community_field{
-    dispaly:inline-block;
+.community_description{
+  margin-top:20px;
+  font-size:18px;
 }
 
 .action{
-    margin-top:-70px;
+  margin-top:-70px;
 }
 
 .community_member{
   max-height:300px;
-  max-width:450px;
+  max-width:600px;
   overflow:scroll;
   margin-top:10px;
 }
 
 .member_box{
-    margin-bottom:10px;
-    dispaly:inline-block;
-    margin-left:20px;
+  margin-bottom:10px;
+  dispaly:inline-block;
+  margin-left:20px;
 }
 .member_field{
     margin-top:40px;
 }
 .member_name{
-    display:inline-block;
-    margin-left:10px;
+  display:inline-block;
+  margin-left:10px;
+  margin-top:20px;
+}
+
+.community_comments{
+  max-height:300px;
+  max-width:600px;
+  overflow:scroll;
+  margin-top:10px;
+}
+
+.com_comment_form{
+  margin-top:10px;
+}
+
+.community_song{
+  margin-top:60px;
+}
+
+.post_field{
+  margin-top:20px;
+  max-height:300px;
+  max-width:600px;
+  overflow:scroll;
+}
+
+.post_name{
+  display:inline-block;
+}
+
+.member_image{
+  margin-left:-50px;
+}
+
+.post_index{
+  margin-bottom:15px;
+}
+
+.community_image{
+  margin-top:20px;
+}
+
+.community-item{
+margin-top:120px;
+margin-left:-150px;
+}
+
+.community_authority{
+  margin-top:-40px;
+  margin-left:400px;
 }

@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_132218) do
+ActiveRecord::Schema.define(version: 2019_12_17_092405) do
 
   create_table "comments", force: :cascade do |t|
-    t.string "content", null: false
+    t.text "content", null: false
     t.integer "song_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2019_12_09_132218) do
     t.string "name", null: false
     t.string "description", null: false
     t.string "community_image_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "community_comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id"
+    t.integer "community_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,13 +91,16 @@ ActiveRecord::Schema.define(version: 2019_12_09_132218) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "artist", null: false
-    t.string "vid"
+    t.string "vid", null: false
     t.text "description", null: false
     t.integer "user_id", null: false
-    t.text "image"
+    t.text "image", null: false
     t.integer "impressions_count", default: 0
+    t.text "lylics_url"
+    t.text "track_url"
+    t.text "artist_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "favorites_count", default: 0, null: false

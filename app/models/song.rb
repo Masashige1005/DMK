@@ -2,7 +2,6 @@
 
 class Song < ApplicationRecord
   require 'google/apis/youtube_v3'
-  require 'musix_match'
 
   has_many :comments
   has_many :favorites, dependent: :destroy
@@ -23,4 +22,12 @@ class Song < ApplicationRecord
     user_ids = favorites.pluck(:user_id)
     user_ids.include?(user.id)
   end
+
+  validates :name, presence: true, uniqueness: true
+  validates :artist, presence: true
+  validates :description, presence: true,length: {maximum: 300}
+  validates :image, presence: true
+  validates :lylics_url, presence: true
+  validates :track_url, presence: true
+  validates :artist_url, presence: true
 end

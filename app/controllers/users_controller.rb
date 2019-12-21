@@ -2,15 +2,20 @@
 
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show update follow unfollow following followed]
+  before_action :ensure_correct_user, only: %i[update follow unfollow following followed]
   def show
-    @favorites = @user.favorites
-    @songs = @user.songs
+    @favorites = @user.favorites.order(id: "DESC")
+    @songs = @user.songs.order(id: "DESC")
   end
 
   def update
   	if @user.update(user_params)
+      flash[:success] = 'ユーザー情報が更新されました'
   		redirect_to user_path(@user.id)
   	else
+      flash.now[:alert] = 'ユーザー情報が更新できませんでした'
+      @favorites = @user.favorites.order(id: "DESC")
+      @songs = @user.songs.order(id: "DESC")
   		render :show
   	end
   end
@@ -27,7 +32,7 @@ class UsersController < ApplicationController
 
   def following
     # このユーザーがフォローしているユーザーを取得
-    @follows = @user.all_following
+    @follows = @user.all_following(order: "follows.id DESC")
   end
 
   def followed
@@ -37,6 +42,13 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def ensure_correct_user
+    #ユーザーIDのチェックするよ！
+    unless @user.id == current_user.id
+      redirect_to user_path(current_user)
+    end
   end
 
   private

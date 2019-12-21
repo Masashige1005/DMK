@@ -10,6 +10,7 @@ class Community < ApplicationRecord
   acts_as_followable # フォロワー機能
 
   attachment :community_image
+  has_many :community_comments
 
   # コミュ二ティ参加
   def join(user)
@@ -23,4 +24,7 @@ class Community < ApplicationRecord
   def join?(user)
     community_users.where(user_id: user.id).ids.present?
   end
+
+  validates :name, presence: true,length: {maximum: 30}
+  validates :description, presence: true
 end

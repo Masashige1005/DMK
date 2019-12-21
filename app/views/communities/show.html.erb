@@ -1,9 +1,41 @@
 <div class = "container">
-  <div class = community_field>
-    <h1><strong><%= @community.name %></strong></h1>
-    <p><%= @community.description %></p>
-    <div id="community-<%= @community.id %>" class="collection-item">
-      <%= render 'communities/join', community: @community, user: @user %>
+  <div class = "row">
+    <div class = "col-md-6 community_field">
+      <h1><strong><%= @community.name %></strong></h1>
+      <div class = "community_description">
+        <p><%= @community.description %></p>
+      </div>
+    </div>
+    <div class = "col-md-6">
+      <div id="community-<%= @community.id %>" class="community-item">
+        <%= render 'communities/join', community: @community, user: @user %>
+      </div>
+      <div class = "community_authority">
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <%= link_to '編集', edit_community_path(@community.id), class: "btn btn-success btn-lg" %>
+          <%= link_to "削除", community_path(@community.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class = "community_image">
+    <%= attachment_image_tag @community, :community_image, :fill,1150,600, fallback: "no_image.jpg",size: '1150x600' %>
+  </div>
+
+  <div class = "community_song">
+    <h2>コミュニティメンバーが投稿した曲</h2>
+    <div class = "post_field">
+      <% @members.each do |member| %>
+        <% member.songs.each do |song| %>
+          <div class = "post_index">
+            <%= link_to song_path(song.id) do %>
+              <%= image_tag song.image.to_s, size: '80x70' %>
+              <%= song.name %>
+            <% end %>
+              <p class = "post_name">を<%= link_to member.name, user_path(member.id) %>さんが投稿しました。</p></br>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
@@ -13,11 +45,25 @@
       <% @members.each do |member| %>
         <div class = "member_box">
       	  <%= link_to user_path(member.id) do %>
-      	    <%= image_tag attachment_url(member, :profile_image, :fill, 80, 50, format: "jpg") %>
-            <p class = "member_name"><%= member.name %></p>
+            <div class = "member_image">
+              <%= attachment_image_tag member, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size: '50x50' %>
+              <p class = "member_name"><%= member.name %></p></br>
+            </div>
           <% end %>
         </div>
       <% end %>
     </div>
+  </div>
+
+  <div>
+  	<h2>コメント一覧</h2>
+    <div id = "comments_area" class = "community_comments">
+<!-- 投稿されたコメント一覧を曲詳細ページに表示するためのrender -->
+      <%= render partial: 'community_comments/index', locals: { community_comments: @comments } %>
+    </div>
+    <% if user_signed_in? %>
+<!-- コメント入力欄を曲詳細ページに表示するためのrender -->
+      <%= render partial: 'community_comments/form', locals: { comment: @comment, community: @community } %>
+    <% end %>
   </div>
 </div>

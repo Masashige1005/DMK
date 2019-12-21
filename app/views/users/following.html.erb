@@ -1,7 +1,7 @@
 <div class = "container">
 	<h1>フォロー一覧</h1>
 	<% @follows.each do |following| %>
-		<%= image_tag attachment_url(following, :profile_image, :fill,90, 80, format: "jpg") %>
+		<%= attachment_image_tag following, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",size: '60x60' %>
 		<strong><%= link_to following.name, user_path(following.id) %></strong>
 		<%= following.introduction %>
 	<% end %>

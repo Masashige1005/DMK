@@ -1,21 +1,23 @@
 <div class = "container">
-	<h1>コミュニティ作成</h1>
-	<%= form_for(@community, url: communities_path, html:{method: "post" }) do |f| %>
-	<ul>
-		<li class = "community_form">
-			<%= f.label :name %>
-			<%= f.text_field :name %>
-		</li>
-		<li class = "community_form">
-			<%= f.label :description %>
-			<%= f.text_area :description %>
-		</li>
-		<li class = "community_form">
-			<%= f.label :image %>
-			<%= f.attachment_field :community_image %>
-		</li>
-		<li class = "community_create">
-			<%= f.submit '作成' %>
-		</li>
-	</ul>
-<% end %>
+  <h1>コミュニティ作成</h1>
+  <%= form_for(@community, url: communities_path, html:{method: "post" }) do |f| %>
+    <%= render 'share/error_messages', object: f.object %>
+    <ul>
+      <li class = "community_form">
+        <%= f.label :name, {class: 'label_list'} %>
+        <%= f.text_field :name, :class => "name_field" %>
+      </li>
+      <li class = "community_form">
+        <%= f.label :description, {class: 'label_list'} %>
+        <%= f.text_area :description %>
+      </li>
+      <li class = "community_form">
+        <%= f.label :image, {class: 'label_list'} %>
+        <%= f.attachment_field :community_image %>
+      </li>
+      <li class = "community_create">
+        <%= f.submit('作成',class: 'btn btn-primary my-1 mb-5 px-5') %>
+      </li>
+    </ul>
+  <% end %>
+</div>

@@ -1,2 +1,2 @@
-$("#comments_area").html("<%= j(render 'index', { comments: @comment.song.comments }) %>")
+$("#comments_area").html("<%= j(render 'index', { comments: @song.comments.order(id: "DESC") }) %>")
 $("textarea").val('')
