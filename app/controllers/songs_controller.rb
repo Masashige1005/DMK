@@ -8,9 +8,7 @@ class SongsController < ApplicationController
 
   def index
     @songs = Song.all.order(id: "DESC")
-    # ランキング(いいね)
     @favorite_ranks = Song.find(Favorite.group(:song_id).order('count(song_id) desc').limit(3).pluck(:song_id))
-    # ランキング(閲覧数)
     @view_ranks = Song.order('impressions_count DESC').limit(3)
   end
 
@@ -23,9 +21,8 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
-    # searchに値が入ってたらAPIを叩く
-    if params[:search].present?
-      query = params[:search]
+    if params[:track].present? && params[:artist].present?
+      query = "#{params[:track]} #{params[:artist]}"
       @data = find_videos(query)
       @lylics = find_lylics(query)
       @ituens = ituens_search(query)
@@ -42,7 +39,7 @@ class SongsController < ApplicationController
       flash[:success] = '楽曲が投稿されました'
       redirect_to song_path(@song.id)
     else
-      flash.now[:alert] = '楽曲が投稿できませんでした'
+      flash.now[:danger] = '楽曲が投稿できませんでした'
       @song = Song.new(song_params)
       render :new
     end
@@ -57,7 +54,6 @@ class SongsController < ApplicationController
     opt = {
       q: keyword,
       type: 'video',
-      # 検索結果はキーワードの関連性の高い上位1件のみ取得します。
       max_results: 1,
       # キーワードと関連性の高い順で絞り込み
       order: :relevance,
@@ -83,7 +79,6 @@ class SongsController < ApplicationController
 
   def find_lylics(keyword)
     Genius.access_token = ENV['GENIUS_API_KEY']
-    Genius.text_format = "html"
     songs = Genius::Song.search(keyword)
     lylics = songs.first
     lylics.title

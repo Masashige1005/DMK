@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: %i[show update follow unfollow following followed]
   before_action :ensure_correct_user, only: %i[update follow unfollow following followed]
   def show
-    @favorites = @user.favorites.order(id: "DESC")
+    @favorites = @user.favorites.order(id: "DESC").includes(:song)
     @songs = @user.songs.order(id: "DESC")
   end
 

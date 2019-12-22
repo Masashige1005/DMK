@@ -18,8 +18,8 @@
         <% @favorites.each do |favorite| %>
           <div class = "infinite_box">
             <%= link_to song_path(favorite.song.id) do %>
-              <%= image_tag favorite.song.image.to_s, size: '80x50' %>
-              <%= favorite.song.name %>
+              <%= image_tag favorite.song.image.to_s, size: '110x75' %>
+              <div class = "infinite_text"><%= favorite.song.name %></div>
             <% end %>
           </div>
         <% end %>
@@ -34,8 +34,8 @@
         <% @songs.each do |song| %>
           <div class = "infinite_box">
             <%= link_to song_path(song.id) do %>
-              <%= image_tag song.image.to_s, size: '80x50' %>
-              <%= song.name %>
+              <%= image_tag song.image.to_s, size: '110x75' %>
+              <div class = "infinite_text"><%= song.name %></div>
             <% end %>
           </div>
         <% end %>

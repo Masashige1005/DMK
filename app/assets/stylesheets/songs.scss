@@ -47,9 +47,10 @@ nav.pagination {
 }
 
 .ranking{
-    display: inline-block;
-    margin:30px 20px;
-    vertical-align: top;
+  display: inline-block;
+  margin:30px;
+  vertical-align: top;
+  max-width:350px;
 }
 
 .card {
@@ -58,9 +59,8 @@ nav.pagination {
 }
 
 .card-body {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
   padding: 1.25rem;
+  max-width:320px;
 }
 
 .card-title {
@@ -71,9 +71,10 @@ nav.pagination {
 .infinte_song{
 	margin-top:15px;
 	margin-bottom:15px;
-	max-height:600px;
-	max-width:930px;
+	height:500px;
+	width:900px;
 	overflow: scroll;
+  margin-left:30px;
 }
 
 .index_field{
@@ -81,17 +82,23 @@ nav.pagination {
 }
 
 .name_index{
-	max-width:450px;
+	max-width:6000px;
 	font-size:18px;
-	margin: 0 -95px;
 }
 
 .locate_song{
 	margin:20px;
 	color:black;
+  input {
+    margin-left:20px;
+  }
 	btn btn-primary{
 	  height:10px;
 	}
+  label{
+   margin-right:10px;
+   color:white;
+  }
 }
 
 
@@ -128,24 +135,24 @@ margin-bottom:-10px;
 
 .lyrics_field{
 	margin-top:50px;
-    display:inline-block;
+  display:inline-block;
 }
 
 .apple_field{
-    padding: 0.5em 1em;
-    background: -moz-linear-gradient(#ffb03c, #ff708d);
-    background: -webkit-linear-gradient(#ffb03c, #ff708d);
-    background: linear-gradient(to right, #ffb03c, #ff708d);
-    color: #FFF;
+  padding: 0.5em 1em;
+  background: -moz-linear-gradient(#ffb03c, #ff708d);
+  background: -webkit-linear-gradient(#ffb03c, #ff708d);
+  background: linear-gradient(to right, #ffb03c, #ff708d);
+  color: #FFF;
 }
 
 .genius_field{
-    padding: 0.5em 1em;
-    background: -moz-linear-gradient(#ffb03c, #ff708d);
-    background: -webkit-linear-gradient(#ffb03c, #ff708d);
-    background: linear-gradient(to right, #ffb03c, #ff708d);
-    color: #FFF;
-    margin-top:40px;
+  padding: 0.5em 1em;
+  background: -moz-linear-gradient(#ffb03c, #ff708d);
+  background: -webkit-linear-gradient(#ffb03c, #ff708d);
+  background: linear-gradient(to right, #ffb03c, #ff708d);
+  color: #FFF;
+  margin-top:40px;
 }
 
 .index_song{
@@ -160,4 +167,13 @@ margin-bottom:-10px;
 
 .post_user{
 	margin-top:10px;
+}
+
+.song_index{
+  margin-bottom:20px;
+}
+
+.impression_ranking{
+  margin-right:-100px;
+  display:inline-block;
 }

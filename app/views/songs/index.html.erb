@@ -12,7 +12,7 @@
           <p class="ranks"><%= "#{i}位" %></p>
           <div class="card">
             <%= link_to song_path(favorite.id) do %>
-            <%= image_tag favorite.image.to_s, size: '200x120' %>
+            <%= image_tag favorite.image.to_s, size: '280x180' %>
               <div class="card-body">
                 <h4 class="card-title"><%= favorite.name %></h4>
               </div>
@@ -31,7 +31,7 @@
           <p class="ranks"><%= "#{i}位" %></p>
           <div class="card">
             <%= link_to song_path(view.id) do %>
-              <%= image_tag view.image.to_s, size: '200x120' %>
+              <%= image_tag view.image.to_s, size: '280x180' %>
               <div class="card-body">
                 <h4 class="card-title"><%= view.name %></h4>
               </div>
@@ -44,14 +44,14 @@
 	<h2>曲一覧</h2>
   <div class = "infinte_song">
 	  <% @songs.each do |song| %>
-      <div class="row">
+      <div class="row song_index">
         <%= link_to song_path(song.id) do %>
-         	<div class="col-md-4 pucture_field">
+         	<div class="col-md-3 pucture_field">
          		<%= image_tag song.image.to_s, size: '200x120' %>
          	</div>
-         	<div class="col-md-6 name_index">
-	  	 			  <strong><p class = "index_song"><%= song.name %></p></br></strong>
-	  	 			  <p><%= song.artist %><p></br>
+         	<div class="col-md-9 name_index">
+	  	 			<strong><p class = "index_song"><%= song.name %></p></br></strong>
+	  	 			<p><%= song.artist %><p></br>
 	  	 			<div class = "description_field">
 	  	 				<p><%= song.description %></p>
 	  	 			</div>

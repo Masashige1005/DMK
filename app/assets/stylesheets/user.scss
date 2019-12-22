@@ -39,15 +39,28 @@ ul {
 }
 
 .infinite_box{
-	margin-bottom:10px;
+	margin-bottom:20px;
 	margin-left:20px;
+  float:left;
 }
+
+.infinite_text{
+  float:right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width:300px;
+  margin-top:10px;
+  margin-left:20px;
+}
+
 
 .song_infinte{
   max-height:300px;
   max-width:450px;
   overflow:scroll;
   height:300px;
+  display:inline-block;
 }
 
 .favorite_infinte{
