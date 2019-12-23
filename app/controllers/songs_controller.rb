@@ -15,7 +15,7 @@ class SongsController < ApplicationController
   def show
     @song = Song.find(params[:id])
     @comment = Comment.new
-    @comments = @song.comments.page(params[:page]).per(10).order(id: "DESC")
+    @comments = @song.comments.page(params[:page]).per(10).includes(:user).order(id: "DESC")
     @artists = Song.where(artist: @song.artist)
   end
 
@@ -55,8 +55,7 @@ class SongsController < ApplicationController
       q: keyword,
       type: 'video',
       max_results: 1,
-      # キーワードと関連性の高い順で絞り込み
-      order: :relevance,
+      order: :relevance, # キーワードと関連性の高い順で絞り込み
       page_token: next_page_token,
       published_after: after.iso8601,
       published_before: before.iso8601
@@ -66,16 +65,15 @@ class SongsController < ApplicationController
 
   def ituens_search(keyword)
     ITunesSearchAPI.search(
-     :term => keyword,
-     :media => 'music',
-     :lang => 'ja_jp',
-     :limit => '1'
-     ).each do |item|
-       p item
+      :term => keyword,
+      :media => 'music',
+      :lang => 'ja_jp',
+      :limit => '1'
+    ).each do |item|
       @track = item['trackViewUrl']
       @artist = item['artistViewUrl']
-     end
-   end
+    end
+  end
 
   def find_lylics(keyword)
     Genius.access_token = ENV['GENIUS_API_KEY']

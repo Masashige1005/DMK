@@ -2,9 +2,9 @@
 
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show update follow unfollow following followed]
-  before_action :ensure_correct_user, only: %i[update follow unfollow following followed]
+  before_action :ensure_correct_user, only: %i[update following followed]
   def show
-    @favorites = @user.favorites.order(id: "DESC").includes(:song)
+    @favorites = @user.favorites.includes(:song).order(id: "DESC")
     @songs = @user.songs.order(id: "DESC")
   end
 
@@ -13,8 +13,8 @@ class UsersController < ApplicationController
       flash[:success] = 'ユーザー情報が更新されました'
   		redirect_to user_path(@user.id)
   	else
-      flash.now[:alert] = 'ユーザー情報が更新できませんでした'
-      @favorites = @user.favorites.order(id: "DESC")
+      flash.now[:danger] = 'ユーザー情報が更新できませんでした'
+      @favorites = @user.favorites.includes(:song).order(id: "DESC")
       @songs = @user.songs.order(id: "DESC")
   		render :show
   	end

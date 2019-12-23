@@ -11,7 +11,7 @@ class CommunitiesController < ApplicationController
     @user = CommunityUser.find_by(params[user_id: current_user.id, community_id: @community.id])
     @members = @community.users.order(id: "DESC")
     @comment = CommunityComment.new
-    @comments = @community.community_comments.order(id: "DESC")
+    @comments = @community.community_comments.includes(:user).order(id: "DESC")
   end
 
   def new

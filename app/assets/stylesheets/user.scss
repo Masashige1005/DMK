@@ -39,7 +39,7 @@ ul {
 }
 
 .infinite_box{
-	margin-bottom:20px;
+  margin:10px;
 	margin-left:20px;
   float:left;
 }
@@ -54,19 +54,11 @@ ul {
   margin-left:20px;
 }
 
-
-.song_infinte{
-  max-height:300px;
-  max-width:450px;
-  overflow:scroll;
-  height:300px;
-  display:inline-block;
-}
-
-.favorite_infinte{
-	max-height:300px;
-  max-width:450px;
+.infinite_list{
+	max-height:450px;
+  max-width:500px;
   overflow: scroll;
+  box-shadow: 0px 0px 8px gray;
 }
 
 .song-name{
@@ -93,4 +85,15 @@ ul {
   margin-left:100px;
   display:inline-block;
   font-size:20px;
+}
+
+.community_infinte{
+  max-height:300px;
+  max-width:500px;
+  overflow: scroll;
+  box-shadow: 0px 0px 8px gray;
+}
+
+.bottom_field{
+  margin-top:20px;
 }

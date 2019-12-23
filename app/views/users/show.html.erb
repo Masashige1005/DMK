@@ -14,7 +14,7 @@
       <% if @favorites.empty? %>
         <p>お気に入りにしている曲はありません</p>
       <% end %>
-      <div class="favorite_infinte">
+      <div class="infinite_list">
         <% @favorites.each do |favorite| %>
           <div class = "infinite_box">
             <%= link_to song_path(favorite.song.id) do %>
@@ -30,7 +30,7 @@
       <% if @songs.empty? %>
        <p>投稿した曲はありません</p>
       <% end %>
-      <div class = "song_infinte">
+      <div class = "infinite_list">
         <% @songs.each do |song| %>
           <div class = "infinite_box">
             <%= link_to song_path(song.id) do %>
@@ -42,48 +42,50 @@
       </div>
     </div>
   </div>
-  <div class = "row">
-    <h2 class = "Submitted_title">参加しているコミュニティ一覧</h2>
-    <div class = "community-empty">
+  <div class = "row bottom_field">
+    <div class="col-md-6">
+      <h2 class = "Submitted_title">参加しているコミュニティ一覧</h2>
       <% if @user.communities.empty? %>
         <p>参加しているコミュニティはありません</p>
       <% end %>
-    </div>
-    <% @user.communities.each do |community| %>
-      <div class = "community_user">
-        <%= link_to community_path(community.id) do %>
-          <%= image_tag attachment_url(community, :community_image, :fill, 80, 50, fallback: "no_image.jpg") %>
-          <%= community.name %>
+      <div class = "infinite_list">
+        <% @user.communities.each do |community| %>
+          <div class = "infinite_box">
+            <%= link_to community_path(community.id) do %>
+              <%= image_tag attachment_url(community, :community_image, :fill, 80, 50, fallback: "no_image.jpg") %>
+              <%= community.name %>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class = "row">
-    <h2 class = "Submitted_title">ユーザー情報編集</h2>
-    <%= form_for(@user) do |f| %>
-      <%= render 'share/error_messages', object: f.object %>
-      <div class = "profile_edit">
-        <ul>
-          <li class = "profile_field">
-            <%= f.label :name, {class: 'label_list'} %>
-            <%= f.text_field :name, :class => "name_field" %>
-          </li>
-          <li class = "profile_field">
-            <%= f.label :introduction, {class: 'label_list'} %>
-            <%= f.text_area :introduction %>
-          </li>
-          <li class = "profile_field">
-            <div class = "profile_image">
-              <%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "no_image.jpg",size: '100x100' %>
-            </div>
-            <%= f.label :image, {class: 'label_list'} %>
-            <%= f.attachment_field :profile_image %>
-          </li>
-          <li class = "profile_submit">
-            <%= f.submit '変更する', :class => 'btn btn-primary' %>
-          </li>
-        </ul>
-      </div>
-    <% end %>
+    </div>
+    <div class = "col-md-6">
+      <h2 class = "Submitted_title">ユーザー情報編集</h2>
+      <%= form_for(@user) do |f| %>
+        <%= render 'share/error_messages', object: f.object %>
+        <div class = "profile_edit">
+          <ul>
+            <li class = "profile_field">
+              <%= f.label :name, {class: 'label_list'} %>
+              <%= f.text_field :name, :class => "name_field" %>
+            </li>
+            <li class = "profile_field">
+              <%= f.label :introduction, {class: 'label_list'} %>
+              <%= f.text_area :introduction %>
+            </li>
+            <li class = "profile_field">
+              <div class = "profile_image">
+                <%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "no_image.jpg",size: '100x100' %>
+              </div>
+              <%= f.label :image, {class: 'label_list'} %>
+              <%= f.attachment_field :profile_image %>
+            </li>
+            <li class = "profile_submit">
+              <%= f.submit '変更する', :class => 'btn btn-primary'   %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

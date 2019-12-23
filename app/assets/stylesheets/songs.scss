@@ -68,13 +68,14 @@ nav.pagination {
   font-size:15px;
 }
 
-.infinte_song{
+.infinite_song{
 	margin-top:15px;
 	margin-bottom:15px;
-	height:500px;
-	width:900px;
+	height:600px;
+	width:1000px;
 	overflow: scroll;
   margin-left:30px;
+  box-shadow: 0px 0px 8px gray;
 }
 
 .index_field{
@@ -156,7 +157,7 @@ margin-bottom:-10px;
 }
 
 .index_song{
-  margin-bottom:-15px;
+  display: inline-block;
   border-bottom: 3px double
 }
 
@@ -170,6 +171,8 @@ margin-bottom:-10px;
 }
 
 .song_index{
+  margin-top:20px;
+  padding-left:20px;
   margin-bottom:20px;
 }
 

@@ -1,8 +1,6 @@
 <div class = "container">
-  <div>
-    <%# app/assets/images %>
-   <%= image_tag 'cheers.jpg', class: 'bg-image' %>
-  </div>
+  <%# app/assets/images %>
+  <%= image_tag 'cheers.jpg', class: 'bg-image' %>
   <div>
   <h2 class = "ranking_title">お気に入りランキング</h2>
 	<% @favorite_ranks.each.with_index(1) do |favorite, i| %>
@@ -42,12 +40,12 @@
     </div>
   <% end %>
 	<h2>曲一覧</h2>
-  <div class = "infinte_song">
+  <div class = "infinite_song">
 	  <% @songs.each do |song| %>
       <div class="row song_index">
         <%= link_to song_path(song.id) do %>
          	<div class="col-md-3 pucture_field">
-         		<%= image_tag song.image.to_s, size: '200x120' %>
+         		<%= image_tag song.image, size: '200x120' %>
          	</div>
          	<div class="col-md-9 name_index">
 	  	 			<strong><p class = "index_song"><%= song.name %></p></br></strong>

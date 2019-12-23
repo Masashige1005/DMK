@@ -24,7 +24,7 @@
 
   <div class = "community_song">
     <h2>コミュニティメンバーが投稿した曲</h2>
-    <div class = "post_field">
+    <div class = "infinite-list">
       <% @members.each do |member| %>
         <% member.songs.each do |song| %>
           <div class = "post_index">
@@ -41,7 +41,7 @@
 
   <div class = "member_field">
     <h2>メンバー一覧</h2>
-    <div class = "community_member">
+    <div class = "infinite-list">
       <% @members.each do |member| %>
         <div class = "member_box">
       	  <%= link_to user_path(member.id) do %>
@@ -55,11 +55,13 @@
     </div>
   </div>
 
-  <div>
-  	<h2>コメント一覧</h2>
-    <div id = "comments_area" class = "community_comments">
+  <div class ="contents row">
+    <div class = "community_comments">
+  	  <h2>コメント一覧</h2>
+      <div id = "comments_area" class = "infinite-list jscroll">
 <!-- 投稿されたコメント一覧を曲詳細ページに表示するためのrender -->
-      <%= render partial: 'community_comments/index', locals: { community_comments: @comments } %>
+        <%= render partial: 'community_comments/index', locals: { community_comments: @comments } %>
+      </div>
     </div>
     <% if user_signed_in? %>
 <!-- コメント入力欄を曲詳細ページに表示するためのrender -->
