@@ -12,7 +12,7 @@ nav.pagination {
 }
 
 .favorite_field{
-	font-size:15px;
+  font-size:15px;
 }
 
 .song_description{
@@ -31,19 +31,19 @@ nav.pagination {
 	margin-left:20px;
 	margin-right:20px;
 	overflow: auto;
-    white-space: nowrap;
-    display:inline-block;
+  white-space: nowrap;
+  display:inline-block;
 }
 
 .description_field{
 	font-size:15px;
 	margin-top:-40px;
-    p {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-    }
+  p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
 }
 
 .ranking{
@@ -104,11 +104,11 @@ nav.pagination {
 
 
 ul li {
-    list-style: none;
+  list-style: none;
 }
 
 ul {
-    width: 500px;
+  width: 500px;
 }
 
 .song_submit{
