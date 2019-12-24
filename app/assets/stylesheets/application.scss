@@ -34,6 +34,7 @@ a:hover{
   color:red;
   text-decoration: none;
 }
+
 .flash-field {
 	padding-bottom: 61px;
 	background-color: black;
@@ -46,22 +47,27 @@ dl.searchbox{
   top:10px;
   left:230px;
 }
+
 dl.searchbox dt{
   padding:2px;
 }
+
 dl.searchbox dt input{
   width:70%;
   height:35px;
   line-height:35px;
   background:#f3f3f3;
   border:none;
+  color:black;
 }
+
 dl.searchbox dd{
   position:absolute;
   top:0px;
   right:0px;
   width:30%;
 }
+
 .search-btn{
   background:#CC0000;
   width:95%;
