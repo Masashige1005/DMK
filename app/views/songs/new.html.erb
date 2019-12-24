@@ -3,11 +3,11 @@
   <%= form_tag(new_song_path, method: :get) do %>
     <div class = "locate_song">
       <ul>
-        <li class = "profile_field">
+        <li class = "text_field">
           <label> track </label>
           <%= text_field_tag :track,'', size: '30x1' %>
         </li>
-        <li class = "profile_field">
+        <li class = "text_field">
           <label> artist </label>
           <%= text_field_tag :artist,'', size: '30x1' %>
           <%= submit_tag '検索', name: nil, :class => 'btn btn-primary'  %>
@@ -30,12 +30,12 @@
       <p>歌詞は<%= link_to 'こちら', @lylics.url, target: :_blank %>へ</p>
       <div class = "input-field">
         <ul>
-          <li class = "profile_field">
+          <li class = "text_field">
             <%= f.label :artist, {class: 'label_list'} %>
             <%= @lylics.primary_artist.name %>
             <%= f.hidden_field :artist, :value => @lylics.    primary_artist.name %>
           </li>
-          <li class = "profile_field">
+          <li class = "text_field">
             <%= f.label :description, {class: 'label_list'} %>
             <%= f.text_area :description %>
           </li>
@@ -48,7 +48,7 @@
           <li>
             <%= f.hidden_field :artist_url, :value => @artist %>
           </li>
-          <li class = "profile_submit">
+          <li class = "submit_field">
             <%= f.submit "確定", class: 'btn btn-primary' %>
           </li>
         </ul>

@@ -65,22 +65,22 @@
         <%= render 'share/error_messages', object: f.object %>
         <div class = "profile_edit">
           <ul>
-            <li class = "profile_field">
+            <li class = "text_field">
               <%= f.label :name, {class: 'label_list'} %>
               <%= f.text_field :name, :class => "name_field" %>
             </li>
-            <li class = "profile_field">
+            <li class = "text_field">
               <%= f.label :introduction, {class: 'label_list'} %>
               <%= f.text_area :introduction %>
             </li>
-            <li class = "profile_field">
+            <li class = "text_field">
               <div class = "profile_image">
                 <%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "no_image.jpg",size: '100x100' %>
               </div>
               <%= f.label :image, {class: 'label_list'} %>
               <%= f.attachment_field :profile_image %>
             </li>
-            <li class = "profile_submit">
+            <li class = "submit_field">
               <%= f.submit '変更する', :class => 'btn btn-primary'   %>
             </li>
           </ul>

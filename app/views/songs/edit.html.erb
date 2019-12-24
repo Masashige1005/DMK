@@ -1,0 +1,14 @@
+<div class = "container">
+  <h1>コミュニティ編集</h1>
+  <%= form_for(@song) do |f| %>
+    <ul>
+  	  <li class = "exit_description">
+        <%= f.label :description, {class: 'label_list'} %>
+        <%= f.text_area :description %>
+      </li>
+      <li class = "submit_field">
+        <%= f.submit "確定", class: 'btn btn-primary' %>
+      </li>
+    </ul>
+  <% end %>
+</div>

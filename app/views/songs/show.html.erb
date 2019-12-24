@@ -8,6 +8,12 @@
 		</div>
 		<div class = "col-sm-3 favorite_field">
 			<%= render "favorites/favorite", song: @song %>
+      <% if @current_user.id == @song.user_id %>
+        <div class = "song_button">
+          <%= link_to '編集', edit_song_path(@song.id), class: "btn btn-success" %>
+          <%= link_to "削除", song_path(@song.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+        </div>
+      <% end %>
 		</div>
 	</div>
 	<div class = "song_description">

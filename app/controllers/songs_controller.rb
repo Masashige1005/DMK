@@ -4,7 +4,8 @@ class SongsController < ApplicationController
   # 曲詳細の閲覧数をカウント
   impressionist actions: [:show]
   require 'itunes-search-api'
-  skip_before_action :authenticate_user!, only: [:index, :show, :search_results]
+  skip_before_action :authenticate_user!, only: %i[index show search_results]
+  before_action :find_song, only: %i[show update edit destroy]
 
   def index
     @songs = Song.all.order(id: "DESC")
@@ -13,7 +14,6 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find(params[:id])
     @comment = Comment.new
     @comments = @song.comments.page(params[:page]).per(10).includes(:user).order(id: "DESC")
     @artists = Song.where(artist: @song.artist)
@@ -26,6 +26,30 @@ class SongsController < ApplicationController
       @data = find_videos(query)
       @lylics = find_lylics(query)
       @ituens = ituens_search(query)
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @song.update(song_update)
+      flash[:success] = '楽曲情報が更新されました'
+      redirect_to song_path(@song.id)
+    else
+      flash[:danger] = "楽曲情報は更新できませんでした"
+      render :edit
+    end
+  end
+
+  def destroy
+    if current_user.id == @song.user_id
+      @song.destroy
+      flash[:success] = '楽曲情報は削除されました'
+      redirect_to songs_path
+    else
+      render :show
+      flash[:danger] = "楽曲情報は削除できませんでした"
     end
   end
 
@@ -84,10 +108,13 @@ class SongsController < ApplicationController
     pp lylics
   end
 
-  # 検索機能
   def search_results
     @q = Song.search(search_params)
     @songs = @q.result(distinct: true)
+  end
+
+  def find_song
+    @song = Song.find(params[:id])
   end
 
   private
@@ -98,5 +125,9 @@ class SongsController < ApplicationController
 
   def search_params
     params.require(:q).permit(:sorts, :name_or_artist_cont)
+  end
+
+  def song_update
+    params.require(:song).permit(:description)
   end
 end
