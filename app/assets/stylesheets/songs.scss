@@ -7,8 +7,8 @@ nav.pagination {
 }
 
 .song-info{
-	font-size:20px;
-	margin:10px;
+  font-size:20px;
+  margin:10px;
 }
 
 .favorite_field{
@@ -16,28 +16,28 @@ nav.pagination {
 }
 
 .song_description{
-	margin-bottom:10px;
-	max-width:700px;
+  margin-bottom:10px;
+  max-width:700px;
 }
 
 .artist-songs_box{
-	max-height:100px;
-	max-width:300px;
-	overflow: auto;
-    white-space: nowrap;
+  max-height:100px;
+  max-width:300px;
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .artist_song{
-	margin-left:20px;
-	margin-right:20px;
-	overflow: auto;
+  margin-left:20px;
+  margin-right:20px;
+  overflow: auto;
   white-space: nowrap;
   display:inline-block;
 }
 
 .description_field{
-	font-size:15px;
-	margin-top:-40px;
+  font-size:15px;
+  margin-top:-40px;
   p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -69,11 +69,11 @@ nav.pagination {
 }
 
 .infinite_song{
-	margin-top:15px;
-	margin-bottom:15px;
-	height:600px;
-	width:1000px;
-	overflow: scroll;
+  margin-top:15px;
+  margin-bottom:15px;
+  height:600px;
+  width:1000px;
+  overflow: scroll;
   margin-left:30px;
   box-shadow: 0px 0px 8px gray;
 }
@@ -88,17 +88,17 @@ nav.pagination {
 }
 
 .locate_song{
-	margin:20px;
-	color:black;
+  margin:20px;
+  color:black;
   input {
     margin-left:20px;
   }
-	btn btn-primary{
-	  height:10px;
-	}
+  btn btn-primary{
+    height:10px;
+  }
   label{
-   margin-right:10px;
-   color:white;
+    margin-right:10px;
+    color:white;
   }
 }
 
@@ -116,13 +116,13 @@ ul {
 }
 
 .input-field{
-	margin-top:30px;
+  margin-top:30px;
 }
 
 .infinite-list{
-	max-height:300px;
-	max-width:700px;
-	overflow: scroll;
+  max-height:300px;
+  max-width:700px;
+  overflow: scroll;
 }
 
 .ranking_title{
@@ -135,7 +135,7 @@ margin-bottom:-10px;
 }
 
 .lyrics_field{
-	margin-top:50px;
+  margin-top:50px;
   display:inline-block;
 }
 
@@ -162,12 +162,12 @@ margin-bottom:-10px;
 }
 
 .song_user{
-	margin-top:15px;
+  margin-top:15px;
   margin-left:-80px;
 }
 
 .post_user{
-	margin-top:10px;
+  margin-top:10px;
 }
 
 .song_index{
