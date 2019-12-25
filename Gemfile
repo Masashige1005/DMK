@@ -56,6 +56,8 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rubocop', require: false
+  gem 'rspec-rails', '~> 3.6'
+  gem 'factory_bot_rails'
 end
 
 group :test do

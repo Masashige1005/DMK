@@ -65,6 +65,10 @@
         <%= render 'share/error_messages', object: f.object %>
         <div class = "profile_edit">
           <ul>
+            <li class = text_field>
+              <%= f.label :email, {class: 'label_list'} %>
+              <%= f.text_field :name, :class => "name_field" %>
+            </li>
             <li class = "text_field">
               <%= f.label :name, {class: 'label_list'} %>
               <%= f.text_field :name, :class => "name_field" %>

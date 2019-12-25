@@ -34,10 +34,10 @@ class SongsController < ApplicationController
 
   def update
     if @song.update(song_update)
-      flash[:success] = '楽曲情報が更新されました'
+      flash[:success] = "Song has been updated"
       redirect_to song_path(@song.id)
     else
-      flash[:danger] = "楽曲情報は更新できませんでした"
+      flash[:danger] = "Song hasn't been updated"
       render :edit
     end
   end
@@ -45,11 +45,11 @@ class SongsController < ApplicationController
   def destroy
     if current_user.id == @song.user_id
       @song.destroy
-      flash[:success] = '楽曲情報は削除されました'
+      flash[:success] = "Song is deleted"
       redirect_to songs_path
     else
+      flash[:danger] = "Song can't be deleted"
       render :show
-      flash[:danger] = "楽曲情報は削除できませんでした"
     end
   end
 
@@ -60,10 +60,10 @@ class SongsController < ApplicationController
     @song.name = song_params[:name]
     @song.image = song_params[:image]
     if @song.save
-      flash[:success] = '楽曲が投稿されました'
+      flash[:success] = "Song has been uploaded"
       redirect_to song_path(@song.id)
     else
-      flash.now[:danger] = '楽曲が投稿できませんでした'
+      flash.now[:danger] = "Sonh hasn't been uploaded"
       @song = Song.new(song_params)
       render :new
     end

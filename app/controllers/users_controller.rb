@@ -10,10 +10,10 @@ class UsersController < ApplicationController
 
   def update
   	if @user.update(user_params)
-      flash[:success] = 'ユーザー情報が更新されました'
+      flash[:success] = "User infomation has been updated"
   		redirect_to user_path(@user.id)
   	else
-      flash.now[:danger] = 'ユーザー情報が更新できませんでした'
+      flash.now[:danger] = "User infomation hasn't been updated"
       @favorites = @user.favorites.includes(:song).order(id: "DESC")
       @songs = @user.songs.order(id: "DESC")
   		render :show

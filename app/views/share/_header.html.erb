@@ -16,7 +16,7 @@
               <ul class="nav navbar-nav">
                 <li><%= link_to 'Home', root_path %></li>
                 <li><%= link_to 'Mypage', user_path(current_user.id) %></li>
-                <li><%= link_to 'Post', new_song_path %></li>
+                <li><%= link_to 'Upload', new_song_path %></li>
                 <li><%= link_to 'Community', communities_path %></li>
                 <li><%= link_to 'About', home_about_path %></li>
                 <li><%= link_to 'Logout',destroy_user_session_path, method: :delete  %></li>

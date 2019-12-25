@@ -23,10 +23,10 @@ class CommunitiesController < ApplicationController
 
   def update
     if @community.update(community_update)
-      flash[:success] = 'コミュニティ情報が更新されました'
+      flash[:success] = "Community has been updated"
       redirect_to community_path(@community.id)
     else
-      flash.now[:alert] = 'コミュニティ情報が更新できませんでした'
+      flash.now[:alert] = "Community hasn't been updated"
       render :edit
     end
   end
@@ -36,12 +36,12 @@ class CommunitiesController < ApplicationController
     @com_user = CommunityUser.new(user_id: current_user.id)
     @community.community_users << @com_user
     if @community.save
-      flash[:success] = 'コミュニティを作成しました'
+      flash[:success] = 'Community is created'
       @members = @community.users
       @comments = @community.community_comments
       redirect_to community_path(@community.id)
     else
-      flash.now[:alert] = 'コミュニティを作成できませんでした'
+      flash.now[:alert] = "Community can't be created"
       render :new
     end
   end
