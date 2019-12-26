@@ -1,7 +1,7 @@
 <div class = "container">
   <%# app/assets/images %>
   <%= image_tag 'cheers.jpg', class: 'bg-image' %>
-  <div class="row">
+  <div class="row favorite_row">
     <h2 class = "ranking_title">お気に入りランキング</h2>
 	  <% @favorite_ranks.each.with_index(1) do |favorite, i| %>
       <div class = "ranking">
