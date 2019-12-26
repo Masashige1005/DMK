@@ -1,10 +1,10 @@
 <div class = "container">
   <%# app/assets/images %>
   <%= image_tag 'cheers.jpg', class: 'bg-image' %>
-  <h2 class = "ranking_title">お気に入りランキング</h2>
-	<% @favorite_ranks.each.with_index(1) do |favorite, i| %>
-    <div class = "ranking">
-      <div class="row">
+  <div class="row">
+    <h2 class = "ranking_title">お気に入りランキング</h2>
+	  <% @favorite_ranks.each.with_index(1) do |favorite, i| %>
+      <div class = "ranking">
         <div class="col-md-4">
           <p class="ranks"><%= "#{i}位" %></p>
           <div class="card">
@@ -17,23 +17,21 @@
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
   <div class="row">
     <h2 class = "ranking_title">閲覧数ランキング</h2>
     <% @view_ranks.each.with_index(1) do |view, i| %>
       <div class = "ranking">
-        <div class="row">
-          <div class="col-md-4">
-            <p class="ranks"><%= "#{i}位" %></p>
-            <div class="card">
-              <%= link_to song_path(view.id) do %>
-                <%= image_tag view.image.to_s, size: '280x180' %>
-                <div class="card-body">
-                  <h4 class="card-title"><%= view.name %></h4>
-                </div>
-              <% end %>
-            </div>
+        <div class="col-md-4">
+          <p class="ranks"><%= "#{i}位" %></p>
+          <div class="card">
+            <%= link_to song_path(view.id) do %>
+              <%= image_tag view.image.to_s, size: '280x180' %>
+              <div class="card-body">
+                <h4 class="card-title"><%= view.name %></h4>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
