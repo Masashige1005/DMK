@@ -60,35 +60,37 @@
       </div>
     </div>
     <div class = "col-md-6">
-      <h2 class = "Submitted_title">ユーザー情報編集</h2>
-      <%= form_for(@user) do |f| %>
-        <%= render 'share/error_messages', object: f.object %>
-        <div class = "profile_edit">
-          <ul>
-            <li class = text_field>
-              <%= f.label :email, {class: 'label_list'} %>
-              <%= f.text_field :name, :class => "name_field", :size=>"20" %>
-            </li>
-            <li class = "text_field">
-              <%= f.label :name, {class: 'label_list'} %>
-              <%= f.text_field :name, :class => "name_field",:size=>"20" %>
-            </li>
-            <li class = "text_field">
-              <%= f.label :introduction, {class: 'label_list'} %>
-              <%= f.text_area :introduction %>
-            </li>
-            <li class = "text_field">
-              <div class = "profile_image">
-                <%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "no_image.jpg",size: '100x100' %>
-              </div>
-              <%= f.label :image, {class: 'label_list'} %>
-              <%= f.attachment_field :profile_image %>
-            </li>
-            <li class = "submit_field">
-              <%= f.submit '変更する', :class => 'btn btn-primary'   %>
-            </li>
-          </ul>
-        </div>
+      <% if @user.id == current_user.id %>
+        <h2 class = "Submitted_title">ユーザー情報編集</h2>
+        <%= form_for(@user) do |f| %>
+          <%= render 'share/error_messages', object: f.object %>
+          <div class = "profile_edit">
+            <ul>
+              <li class = text_field>
+                <%= f.label :email, {class: 'label_list'} %>
+                <%= f.text_field :email, :class => "name_field", :size=>"20" %>
+              </li>
+              <li class = "text_field">
+                <%= f.label :name, {class: 'label_list'} %>
+                <%= f.text_field :name, :class => "name_field",:size=>"20" %>
+              </li>
+              <li class = "text_field">
+                <%= f.label :introduction, {class: 'label_list'} %>
+                <%= f.text_area :introduction %>
+              </li>
+              <li class = "text_field">
+                <div class = "profile_image">
+                  <%= attachment_image_tag @user, :profile_image, :fill,100,100  , fallback: "no_image.jpg",size: '100x100' %>
+                </div>
+                <%= f.label :image, {class: 'label_list'} %>
+                <%= f.attachment_field :profile_image %>
+              </li>
+              <li class = "submit_field">
+                <%= f.submit '変更する', :class => 'btn btn-primary'   %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
