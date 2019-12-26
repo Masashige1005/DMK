@@ -33,7 +33,6 @@ RSpec.describe Song, type: :model do
       expect(FactoryBot.build(:song, :no_artist_url)).to_not be_valid
     end
   end
-  require 'rails_helper'
 
   before do
     @user1 = FactoryBot.create(:user, :create_with_songs)
@@ -126,10 +125,6 @@ RSpec.describe Song, type: :model do
         find("input[name='commit']").click
         expect(page).to have_current_path song_path(song)
       end
-      scenario "エラーメッセージが表示されるか" do
-        find("input[name='commit']").click
-        expect(page).to have_content "error"
-      end
     end
 
     feature "自分が投稿したsongの更新" do
@@ -145,13 +140,10 @@ RSpec.describe Song, type: :model do
       scenario "リダイレクト先は正しいか" do
         expect(page).to have_current_path song_path(@user1.songs.first)
       end
-      scenario "サクセスメッセージが表示されるか" do
-        expect(page).to have_content "successfully"
-      end
     end
 
     feature "他人が投稿したsongの更新" do
-      scenario "編集ページへアクセスできず、book一覧ページにリダイレクトされるか" do
+      scenario "編集ページへアクセスできず、song一覧ページにリダイレクトされるか" do
         visit edit_book_path(@user2.songs.first)
         expect(page).to have_current_path songs_path
       end
@@ -165,26 +157,23 @@ RSpec.describe Song, type: :model do
         find("input[name='commit']").click
       end
       scenario "リダイレクト先は正しいか" do
-        expect(page).to have_current_path book_path(@user1.books.first)
-      end
-      scenario "エラーメッセージが表示されるか" do
-        expect(page).to have_content "error"
+        expect(page).to have_current_path song_path(@user1.songs.first)
       end
     end
 
-    feature "bookの削除" do
+    feature "songの削除" do
       before do
-        book = @user1.books.first
-        visit book_path(book)
+        book = @user1.songs.first
+        visit song_path(song)
       end
-      scenario "bookが削除されているか" do
+      scenario "songが削除されているか" do
         expect {
-          all("a[data-method='delete']").select{|n| n[:href] == book_path(@user1.books.first)}[0].click
-        }.to change(@user1.books, :count).by(-1)
+          all("a[data-method='delete']").select{|n| n[:href] == song_path(@user1.songs.first)}[0].click
+        }.to change(@user1.songs, :count).by(-1)
       end
       scenario "リダイレクト先が正しいか" do
-        all("a[data-method='delete']").select{|n| n[:href] == book_path(@user1.books.first)}[0].click
-        expect(page).to have_current_path books_path
+        all("a[data-method='delete']").select{|n| n[:href] == song_path(@user1.songs.first)}[0].click
+        expect(page).to have_current_path songs_path
       end
     end
   end
