@@ -53,7 +53,7 @@
           <div class = "infinite_box">
             <%= link_to community_path(community.id) do %>
               <%= image_tag attachment_url(community, :community_image, :fill, 80, 50, fallback: "no_image.jpg") %>
-              <%= community.name %>
+              <div class = "infinite_text"><%= community.name %></div>
             <% end %>
           </div>
         <% end %>
