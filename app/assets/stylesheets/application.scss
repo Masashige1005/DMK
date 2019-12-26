@@ -274,3 +274,14 @@ footer .menu li a:hover{
   background-color: black;
   height: 1px;
 }
+
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}

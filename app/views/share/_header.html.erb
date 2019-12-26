@@ -1,52 +1,52 @@
-      <!-- ユーザー がログインしていた場合 -->
-      <% if user_signed_in? %>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container-fluid block">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <p class = "navbar-brand">DMK</p>
-            </div>
+<!-- ユーザー がログインしていた場合 -->
+<% if user_signed_in? %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid block">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <p class = "navbar-brand">DMK</p>
+      </div>
 
-            <div class="collapse navbar-collapse list1" id="bs-example-navbar-collapse-2">
-              <ul class="nav navbar-nav">
-                <li><%= link_to 'Home', root_path %></li>
-                <li><%= link_to 'Mypage', user_path(current_user.id) %></li>
-                <li><%= link_to 'Upload', new_song_path %></li>
-                <li><%= link_to 'Community', communities_path %></li>
-                <li><%= link_to 'Logout',destroy_user_session_path, method: :delete  %></li>
-              </ul>
-            </div>
-            <div class="list2"><%= render 'share/seach_form' %></div>
-          </div>
-        </nav>
-      <!-- ユーザー がログインしていなかった場合 -->
-      <% else %>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container-fluid block">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <p class="navbar-brand">DMK</p>
-            </div>
+      <div class="collapse navbar-collapse list1" id="bs-example-navbar-collapse-2">
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Mypage', user_path(current_user.id) %></li>
+          <li><%= link_to 'Upload', new_song_path %></li>
+          <li><%= link_to 'Community', communities_path %></li>
+          <li><%= link_to 'Logout',destroy_user_session_path, method: :delete  %></li>
+        </ul>
+      </div>
+      <div class="list2"><%= render 'share/seach_form' %></div>
+    </div>
+  </nav>
+<!-- ユーザー がログインしていなかった場合 -->
+<% else %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid block">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <p class="navbar-brand">DMK</p>
+      </div>
 
-            <div class="collapse navbar-collapse list1" id="bs-example-navbar-collapse-2">
-              <ul class="nav navbar-nav">
-                <li><%= link_to 'Home',root_path%> <span class="sr-only">(current)</span></a></li>
-                <li><%= link_to 'Login',new_user_session_path%></li>
-                <li><%= link_to 'Signup',new_user_registration_path%></li>
-                <li><%= link_to 'About', home_about_path %></li>
-              </ul>
-            </div>
-            <div class="list2"><%= render 'share/seach_form' %></div>
-          </div>
-        </nav>
-      <% end %>
+      <div class="collapse navbar-collapse list1" id="bs-example-navbar-collapse-2">
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Home',root_path%> <span class="sr-only">(current)</span></a></li>
+          <li><%= link_to 'Login',new_user_session_path%></li>
+          <li><%= link_to 'Signup',new_user_registration_path%></li>
+          <li><%= link_to 'About', home_about_path %></li>
+        </ul>
+      </div>
+      <div class="list2"><%= render 'share/seach_form' %></div>
+    </div>
+  </nav>
+<% end %>

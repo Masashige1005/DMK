@@ -50,16 +50,6 @@
     <div class="col-md-4 offset-md-4"></div>
   </div>
 
-	<div class = "artist-songs_box">
-  	<% @artists.each do |artist| %>
-  		<div class = "artist_song">
-  			<%= link_to song_path(artist.id) do %>
-  				<%= image_tag artist.image.to_s, size: '100x60' %>
-  			<% end %>
-  		</div>
-  	<% end %>
-  </div>
-
   <div class ="contents row">
     <div class = "comment_index">
       <h2 class = "comment_title">コメント一覧</h2>

@@ -4,7 +4,7 @@ class SongsController < ApplicationController
   # 曲詳細の閲覧数をカウント
   impressionist actions: [:show]
   require 'itunes-search-api'
-  skip_before_action :authenticate_user!, only: %i[index show search_results]
+  skip_before_action :authenticate_user!, only: %i[index search_results]
   before_action :find_song, only: %i[show update edit destroy]
 
   def index
