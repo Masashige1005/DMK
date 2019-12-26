@@ -27,12 +27,16 @@
     <div class = "infinite-list">
       <% @members.each do |member| %>
         <% member.songs.each do |song| %>
-          <div class = "post_index">
-            <%= link_to song_path(song.id) do %>
-              <%= image_tag song.image.to_s, size: '80x70' %>
-              <%= song.name %>
-            <% end %>
-              <p class = "post_name">を<%= link_to member.name, user_path(member.id) %>さんが投稿しました。</p></br>
+          <div class = "row post_index">
+            <div class = "col-md-2 col-md-offset-1">
+              <%= link_to song_path(song.id) do %>
+                <%= image_tag song.image.to_s, size: '80x70' %>
+              <% end %>
+            </div>
+            <div class = "col-md-9 post_text">
+              <%= link_to song.name, song_path(song.id) %>
+              <p class = "post_name">を<%= link_to member.name, user_path(member.id) %>さんが投稿しました。</p><br>
+            </div>
           </div>
         <% end %>
       <% end %>
