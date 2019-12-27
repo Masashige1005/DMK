@@ -1,6 +1,6 @@
 <div class = "container">
   <h1>フォロワー一覧</h1>
-    <div class = "row">
+  <div class = "row">
     <% @follows.each do |followed| %>
       <div class = "col-md-2">
       	<%= attachment_image_tag followed, :profile_image, :fill, 80, 80, fallback: "no_image.jpg",size: '80x80' %>
@@ -11,5 +11,6 @@
       <div class = "col-md-7 follow_introduction">
         <%= followed.introduction %>
       </div>
-	<% end %>
+	  <% end %>
+  </div>
 </div>
