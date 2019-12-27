@@ -30,7 +30,7 @@
           <div class = "row post_index">
             <div class = "col-md-2 col-md-offset-1">
               <%= link_to song_path(song.id) do %>
-                <%= image_tag song.image.to_s, size: '80x70' %>
+                <%= image_tag song.image.to_s, size: '100x70' %>
               <% end %>
             </div>
             <div class = "col-md-9 post_text">
@@ -47,11 +47,13 @@
     <h2>メンバー一覧</h2>
     <div class = "infinite-list">
       <% @members.each do |member| %>
-        <div class = "member_box">
+        <div class = "row member_box">
       	  <%= link_to user_path(member.id) do %>
-            <div class = "member_image">
-              <%= attachment_image_tag member, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size: '50x50' %>
-              <p class = "member_name"><%= member.name %></p></br>
+            <div class = "col-md-2 col-md-offset-1">
+              <%= attachment_image_tag member, :profile_image, :fill, 80, 80, fallback: "no_image.jpg",size: '80x80' %>
+            </div>
+            <div class = "col-md-9 post_text">
+              <p class = "member_name"><%= member.name %></p>
             </div>
           <% end %>
         </div>
