@@ -1,7 +1,7 @@
 <div class = "container">
 	<h1>フォロワー一覧</h1>
 	<% @follows.each do |followed| %>
-		<%= attachment_image_tag following, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",size: '60x60' %>
+		<%= attachment_image_tag followed, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",size: '60x60' %>
 		<strong><%= link_to followed.name, user_path(followed.id) %></strong>
 		<%= followed.introduction %>
 	<% end %>
