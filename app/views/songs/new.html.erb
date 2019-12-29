@@ -15,38 +15,44 @@
 
     </div>
   <% end %>
-  <%= form_for(@song, url: songs_path, html:{method: "post" }) do |f| %>
-    <%= render 'share/error_messages', object: f.object %>
-    <% if @data != nil %>
-      <% @data.items.each do |item| %>
-        <div class = "song-name">
-          <strong><%= item.snippet.title %></strong>
-          <%= f.hidden_field :name, :value => item.snippet.title %>
+  <% if @data != nil %>
+    <%= form_for(@song, url: songs_path, html:{method: "post" }) do |f| %>
+      <%= render 'share/error_messages', object: f.object %>
+      <div class = "row video_field">
+        <div class = "col-md-8 song_video">
+          <% @data.items.each do |item| %>
+            <strong><%= item.snippet.title %></strong>
+            <iframe width="700" height="410" src="  https://www.youtube.com/	embed/<%= item.id.video_id %>"   frameborder="0" allow="	accelerometer; autoplay;   encrypted-media; gyroscope; picture-in-picture"   allowfullscreen></iframe>
+            <%= f.hidden_field :name, :value => item.snippet.title %>
+            <%= f.hidden_field :vid, :value => item.id.video_id %>
+            <%= f.hidden_field :image, :value => item.snippet.  thumbnails.medium.url %>
+          <% end %>
         </div>
-        <iframe width="700" height="410" src="  https://www.youtube.com/	embed/<%= item.id.video_id %>"   frameborder="0" allow="	accelerometer; autoplay;   encrypted-media; gyroscope; picture-in-picture"   allowfullscreen></iframe>
-        <%= f.hidden_field :vid, :value => item.id.video_id %>
-        <%= f.hidden_field :image, :value => item.snippet.  thumbnails.medium.url %>
-      <% end %>
-      <p>歌詞は<%= link_to 'こちら', @lylics.url, target: :_blank %>へ</p>
+        <div class = "col-md-4 lyrics_field">
+          <div class = "genius_field">
+            <h3>Genius</h3>
+            <p>歌詞は<%= link_to 'こちら', @lylics.url, target: :_blank %>へ</p>
+            <%= f.hidden_field :lylics_url, :value => @lylics.url %>
+          </div>
+          <div class = "apple_field">
+            <h3>Apple Music</h3>
+            <p>アーティストのリンクは<%= link_to 'こちら', @artist %></p>
+            <%= f.hidden_field :track_url, :value => @artist %>
+            <p>楽曲のリンクは<%= link_to 'こちら', @track %>へ</p>
+            <%= f.hidden_field :artist_url, :value => @track %>
+          </div>
+        </div>
+      </div>
       <div class = "input-field">
         <ul>
           <li class = "text_field">
             <%= f.label :artist, {class: 'label_list'} %>
             <%= @lylics.primary_artist.name %>
-            <%= f.hidden_field :artist, :value => @lylics.    primary_artist.name %>
+            <%= f.hidden_field :artist, :value => @lylics.primary_artist.name %>
           </li>
           <li class = "text_field">
             <%= f.label :description, {class: 'label_list'} %>
             <%= f.text_area :description %>
-          </li>
-          <li>
-            <%= f.hidden_field :lylics_url, :value => @lylics.url %>
-          </li>
-          <li>
-            <%= f.hidden_field :track_url, :value => @track %>
-          </li>
-          <li>
-            <%= f.hidden_field :artist_url, :value => @artist %>
           </li>
           <li class = "submit_field">
             <%= f.submit "確定", class: 'btn btn-primary' %>

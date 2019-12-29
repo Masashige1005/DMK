@@ -25,14 +25,14 @@
 			<iframe width="730" height="420" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
     <div class = "col-sm-4 lyrics_field">
-      <div class = "apple_field">
-        <h3>Apple Music</h3>
-        <p><%= link_to @song.artist, @song.artist_url, target: :_blank %></p>
-        <p><%= link_to @song.name, @song.track_url,target: :_blank %></p>
-      </div>
       <div class = "genius_field">
         <h3>Genius</h3>
         <p>歌詞は<%= link_to 'こちら', @song.lylics_url, target: :_blank, :style=>"color:grey" %>へ</p>
+      </div>
+      <div class = "apple_field">
+        <h3>Apple Music</h3>
+        <p><%= link_to @song.artist, @song.artist_url %></p>
+        <p><%= link_to @song.name, @song.track_url %></p>
       </div>
     </div>
   </div>
