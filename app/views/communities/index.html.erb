@@ -1,19 +1,23 @@
 <div class = "container">
-	<div class = "community-title">
+	<div class = "row">
+	  <div class = "col-md-7">
 		<h1>コミュニティ一覧</h1>
-	</div>
-	<div class = "community_button">
+	  </div>
+	  <div class = "col-md-5 community_button">
 		<%= link_to "コミュニティ作成", new_community_path, class: 'btn btn-default' %>
-	</div>
-	<% @communities.each do |community| %>
-	 <div class = "community-index">
-	 	<%= link_to community_path(community.id) do %>
-	  		<%= attachment_image_tag community, :community_image, :fill,120,100, fallback: "no_image.jpg",size: '120x100' %>
-	  	<% end %>
-	  	<div class = "community-field">
-	   		<p class = "community-name">コミュニティ名: <strong><%= link_to community.name, community_path(community.id) %></strong></p>
-	  		<p>紹介文: <%= community.description %></p>
 	  </div>
 	</div>
-	<% end %>
+	<% @communities.each do |community| %>
+	<div class = "row">
+	  <div class = "col-md-2 col-md-offset-1">
+	 	<%= link_to community_path(community.id) do %>
+	  	  <%= attachment_image_tag community, :community_image, :fill,120,100, fallback: "no_image.jpg",size: '120x100' %>
+	  	<% end %>
+	  </div>
+	  <div class = "col-md-9 community-field">
+	   	<p class = "community-name">コミュニティ名: <strong><%= link_to community.name, community_path(community.id) %></strong></p>
+	  	<p>紹介文: <%= community.description %></p>
+	  </div>
+	</div>
+  <% end %>
 </div>

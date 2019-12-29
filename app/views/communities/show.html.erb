@@ -49,11 +49,12 @@
       <% @members.each do |member| %>
         <div class = "row member_box">
       	  <%= link_to user_path(member.id) do %>
-            <div class = "col-md-2 col-md-offset-1">
+           <div class = "col-md-1"></div>
+            <div class = "col-md-3 member_image">
               <%= attachment_image_tag member, :profile_image, :fill, 80, 80, fallback: "no_image.jpg",size: '80x80' %>
             </div>
-            <div class = "col-md-9 post_text">
-              <p class = "member_name"><%= member.name %></p>
+            <div class = "col-md-8 post_text">
+              <p class = member_name><%= member.name %></p>
             </div>
           <% end %>
         </div>
@@ -61,13 +62,11 @@
     </div>
   </div>
 
-  <div class ="contents row">
-    <div class = "community_comments">
-  	  <h2>コメント一覧</h2>
-      <div id = "comments_area" class = "infinite-list jscroll">
+  <div class = "community_comments">
+  	<h2>コメント一覧</h2>
+    <div id = "comments_area" class = "infinite-list jscroll">
 <!-- 投稿されたコメント一覧を曲詳細ページに表示するためのrender -->
-        <%= render partial: 'community_comments/index', locals: { community_comments: @comments } %>
-      </div>
+      <%= render partial: 'community_comments/index', locals: { community_comments: @comments } %>
     </div>
     <% if user_signed_in? %>
 <!-- コメント入力欄を曲詳細ページに表示するためのrender -->

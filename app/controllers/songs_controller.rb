@@ -15,7 +15,7 @@ class SongsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @song.comments.page(params[:page]).per(10).includes(:user).order(id: "DESC")
+    @comments = @song.comments.includes(:user).order(id: "DESC")
     @artists = Song.where(artist: @song.artist)
   end
 

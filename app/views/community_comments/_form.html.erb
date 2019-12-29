@@ -1,5 +1,5 @@
 <%= form_with(url: community_community_comments_path(community.id), model: [community, comment] ) do |form| %>
-  <div class = "com_comment_form">
+  <div class = "comment_form">
    <div id = "comment-field">
      <%= form.text_area :body, size: "40x3" %>
    </div>

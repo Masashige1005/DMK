@@ -1,14 +1,17 @@
 <% community_comments.each do |comment| %>
   <% unless comment.id.nil? %>
-    <div class = "comment-box">
-      <%= link_to user_path(comment.user.id) do %>
-        <div class = "comment_image">
-          <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size: '50x50' %>
+    <div class = "row comment-box">
+      <div class = "col-md-1"></div>
+        <div class = "col-md-3 comment_image">
+          <%= link_to user_path(comment.user.id) do %>
+            <%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",size: '60x60' %>
+          <% end %>
         </div>
-        <div class = "comment_user"><%= comment.user.name %></div>
-      <% end %>
-      <div class = "comment_content"><%= comment.body %></div></br>
-	</div>
+      <div class = "col-md-8 comment_text">
+        <p class = "comment_name"><%= link_to comment.user.name, user_path(comment.user_id) %></p>
+        <p class = "comment_body"><%= comment.body %></p>
+	    </div>
+    </div>
   <% end %>
 <% end %>
 
