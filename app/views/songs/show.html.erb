@@ -1,29 +1,29 @@
 <div class = "container">
-	<div class="row song-info">
-		<div class="col-sm-6">
-			<%= @song.name %>
-		</div>
-		<div class="col-sm-3">
-			<%= @song.artist %>
-		</div>
-		<div class = "col-sm-3 favorite_field">
-			<%= render "favorites/favorite", song: @song %>
+  <div class="row song-info">
+    <div class="col-sm-6">
+      <%= @song.name %>
+    </div>
+    <div class="col-sm-3">
+      <%= @song.artist %>
+    </div>
+    <div class = "col-sm-3 favorite_field">
+      <%= render "favorites/favorite", song: @song %>
       <% if current_user.id == @song.user_id %>
         <div class = "song_button">
           <%= link_to '編集', edit_song_path(@song.id), class: "btn btn-success" %>
           <%= link_to "削除", song_path(@song.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
         </div>
       <% end %>
-		</div>
-	</div>
-	<div class = "song_description">
-		<%= @song.description %>
-	</div>
+    </div>
+  </div>
+  <div class = "song_description">
+    <%= @song.description %>
+  </div>
 
-	<div class="row video_field">
-		<div class = "col-sm-8 song_video">
-			<iframe width="730" height="420" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		</div>
+  <div class="row video_field">
+    <div class = "col-sm-8 song_video">
+      <iframe width="730" height="420" src="https://www.youtube.com/embed/<%= @song.vid %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <div class = "col-sm-4 lyrics_field">
       <div class = "genius_field">
         <h3>Genius</h3>
@@ -31,8 +31,8 @@
       </div>
       <div class = "apple_field">
         <h3>Apple Music</h3>
-        <p><%= link_to @song.artist, @song.artist_url %></p>
-        <p><%= link_to @song.name, @song.track_url %></p>
+        <p><%= link_to @song.artist, @song.artist_url, target: :_blank %></p>
+        <p><%= link_to @song.name, @song.track_url, target: :_blank %></p>
       </div>
     </div>
   </div>

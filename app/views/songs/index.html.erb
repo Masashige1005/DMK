@@ -3,7 +3,7 @@
   <%= image_tag 'cheers.jpg', class: 'bg-image' %>
   <div class="row row_ranking">
     <h2 class = "ranking_title">お気に入りランキング</h2>
-	  <% @favorite_ranks.each.with_index(1) do |favorite, i| %>
+    <% @favorite_ranks.each.with_index(1) do |favorite, i| %>
       <div class = "col-md-4 ranking">
         <p class="ranks"><%= "#{i}位" %></p>
         <div class="card">
@@ -33,23 +33,23 @@
       </div>
     <% end %>
   </div>
-	<h2>曲一覧</h2>
+  <h2>曲一覧</h2>
   <div class = "infinite_song">
-	  <% @songs.each do |song| %>
+    <% @songs.each do |song| %>
       <div class="row song_index">
         <%= link_to song_path(song.id), data: {"turbolinks" => false} do %>
-         	<div class="col-md-3 pucture_field">
-         		<%= image_tag song.image, size: '200x120' %>
-         	</div>
-         	<div class="col-md-9 name_index">
-	  	 			<p class = "index_song"><strong><%= song.name %></strong></p><br>
-	  	 			<p><%= song.artist %><p><br>
-	  	 			<div class = "description_field">
-	  	 				<p><%= song.description %></p>
-	  	 			</div>
-	  	 		</div>
-	  	  <% end %>
+          <div class="col-md-3 pucture_field">
+         <%= image_tag song.image, size: '200x120' %>
+          </div>
+          <div class="col-md-9 name_index">
+            <p class = "index_song"><strong><%= song.name %></strong></p><br>
+            <p><%= song.artist %><p><br>
+            <div class = "description_field">
+              <p><%= song.description %></p>
+            </div>
+          </div>
+        <% end %>
       </div>
-	  <% end %>
+    <% end %>
   </div>
 </div>

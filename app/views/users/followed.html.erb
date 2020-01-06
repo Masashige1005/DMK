@@ -3,7 +3,7 @@
   <% @follows.each do |followed| %>
     <div class = "row">
       <div class = "col-md-2">
-      	<%= attachment_image_tag followed, :profile_image, :fill, 80, 80, fallback: "no_image.jpg",size: '80x80' %>
+        <%= attachment_image_tag followed, :profile_image, :fill, 80, 80, fallback: "no_image.jpg",size: '80x80' %>
       </div>
       <div class = "col-md-3 follow_name">
         <p><strong><%= link_to followed.name, user_path(followed.id) %></strong></p>
@@ -12,5 +12,5 @@
         <%= followed.introduction %>
       </div>
     </div>
-	<% end %>
+  <% end %>
 </div>

@@ -1,6 +1,6 @@
 class CommunityCommentsController < ApplicationController
   def create
-  	@community = Community.find(params[:community_id])
+    @community = Community.find(params[:community_id])
     # @songのidを含んだ状態でインスタンスを作成
     @comment = @community.community_comments.build(comment_params)
     @comment.user_id = current_user.id

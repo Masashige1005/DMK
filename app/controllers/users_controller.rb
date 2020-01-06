@@ -9,15 +9,15 @@ class UsersController < ApplicationController
   end
 
   def update
-  	if @user.update(user_params)
+    if @user.update(user_params)
       flash[:success] = "User infomation has been updated"
-  		redirect_to user_path(@user.id)
-  	else
+      redirect_to user_path(@user.id)
+    else
       flash.now[:danger] = "User infomation hasn't been updated"
       @favorites = @user.favorites.includes(:song).order(id: "DESC")
       @songs = @user.songs.order(id: "DESC")
-  		render :show
-  	end
+      render :show
+    end
   end
 
   def follow
@@ -54,6 +54,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image, :email)
+    params.require(:user).permit(:name, :introduction, :profile_image, :email)
   end
 end
