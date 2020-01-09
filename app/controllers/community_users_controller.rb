@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CommunityUsersController < ApplicationController
   before_action :find_community, only: %i[create destroy]
   def create
@@ -5,7 +6,7 @@ class CommunityUsersController < ApplicationController
       @community.join(current_user)
       @community.reload
       respond_to do |format|
-        format.html{ redirect_to request.referrer || root_url}
+        format.html { redirect_to request.referrer || root_url }
         format.js
       end
     end
@@ -16,7 +17,7 @@ class CommunityUsersController < ApplicationController
       @community.unjoin(current_user)
       @community.reload
       respond_to do |format|
-        format.html{ redirectr_to request_referrer || root_url}
+        format.html { redirectr_to request_referrer || root_url }
         format.js
       end
     end

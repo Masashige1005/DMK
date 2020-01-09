@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CommunityCommentsController < ApplicationController
   def create
     @community = Community.find(params[:community_id])

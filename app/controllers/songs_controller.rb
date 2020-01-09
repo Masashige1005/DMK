@@ -8,14 +8,14 @@ class SongsController < ApplicationController
   before_action :find_song, only: %i[show update edit destroy]
 
   def index
-    @songs = Song.all.order(id: "DESC")
+    @songs = Song.all.order(id: 'DESC')
     @favorite_ranks = Song.find(Favorite.group(:song_id).order('count(song_id) desc').limit(3).pluck(:song_id))
     @view_ranks = Song.order('impressions_count DESC').limit(3)
   end
 
   def show
     @comment = Comment.new
-    @comments = @song.comments.includes(:user).order(id: "DESC")
+    @comments = @song.comments.includes(:user).order(id: 'DESC')
     @artists = Song.where(artist: @song.artist)
   end
 
@@ -29,12 +29,11 @@ class SongsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @song.update(song_update)
-      flash[:success] = "Song has been updated"
+      flash[:success] = 'Song has been updated'
       redirect_to song_path(@song.id)
     else
       flash[:danger] = "Song hasn't been updated"
@@ -45,7 +44,7 @@ class SongsController < ApplicationController
   def destroy
     if current_user.id == @song.user_id
       @song.destroy
-      flash[:success] = "Song is deleted"
+      flash[:success] = 'Song is deleted'
       redirect_to songs_path
     else
       flash[:danger] = "Song can't be deleted"
@@ -60,7 +59,7 @@ class SongsController < ApplicationController
     @song.name = song_params[:name]
     @song.image = song_params[:image]
     if @song.save
-      flash[:success] = "Song has been uploaded"
+      flash[:success] = 'Song has been uploaded'
       redirect_to song_path(@song.id)
     else
       flash.now[:danger] = "Sonh hasn't been uploaded"
@@ -89,10 +88,10 @@ class SongsController < ApplicationController
 
   def ituens_search(keyword)
     ITunesSearchAPI.search(
-      :term => keyword,
-      :media => 'music',
-      :lang => 'ja_jp',
-      :limit => '1'
+      term: keyword,
+      media: 'music',
+      lang: 'ja_jp',
+      limit: '1'
     ).each do |item|
       @track = item['trackViewUrl']
       @artist = item['artistViewUrl']

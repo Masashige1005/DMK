@@ -25,7 +25,7 @@ class Song < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :artist, presence: true
-  validates :description, presence: true,length: {maximum: 300}
+  validates :description, presence: true, length: { maximum: 300 }
   validates :image, presence: true
   validates :lylics_url, presence: true
   validates :track_url, presence: true

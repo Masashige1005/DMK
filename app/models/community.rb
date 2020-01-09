@@ -14,17 +14,17 @@ class Community < ApplicationRecord
 
   # コミュ二ティ参加
   def join(user)
-  	community_users.create(user_id: user.id, community_id: self.id)
+    community_users.create(user_id: user.id, community_id: id)
   end
 
   def unjoin(user)
-  	community_users.find_by(user_id: user.id, community_id: self.id).destroy
+    community_users.find_by(user_id: user.id, community_id: id).destroy
   end
 
   def join?(user)
     community_users.where(user_id: user.id).ids.present?
   end
 
-  validates :name, presence: true,length: {maximum: 30}
+  validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true
 end

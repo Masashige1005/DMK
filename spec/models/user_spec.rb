@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
   	  it "nameが空の場合"
   	    expect(FactoryBot.build(:user, :no_name)).to_not be_valid
       end
-      it "emailがからの場合"
+      it "emailが空の場合"
   	    expect(FactoryBot.build(:user, :no_email)).to_not be_valid
   	  end
       it "nameが30文字以上の場合"

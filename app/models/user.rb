@@ -20,7 +20,6 @@ class User < ApplicationRecord
   attachment :profile_image
 
   validates :email, presence: true
-  validates :name, presence: true,length: {minimum: 2, maximum: 30}
-  validates :introduction,length: {maximum: 200}
-
+  validates :name, presence: true, length: { minimum: 2, maximum: 30 }
+  validates :introduction, length: { maximum: 200 }
 end

@@ -9,21 +9,20 @@ class CommunitiesController < ApplicationController
 
   def show
     @user = CommunityUser.find_by(params[user_id: current_user.id, community_id: @community.id])
-    @members = @community.users.order(id: "DESC")
+    @members = @community.users.order(id: 'DESC')
     @comment = CommunityComment.new
-    @comments = @community.community_comments.includes(:user).order(id: "DESC")
+    @comments = @community.community_comments.includes(:user).order(id: 'DESC')
   end
 
   def new
     @community = Community.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @community.update(community_update)
-      flash[:success] = "Community has been updated"
+      flash[:success] = 'Community has been updated'
       redirect_to community_path(@community.id)
     else
       flash.now[:alert] = "Community hasn't been updated"
@@ -74,7 +73,6 @@ class CommunitiesController < ApplicationController
   private
 
   def community_params
-    #params.require(:community).permit(:name, :description, :community_image)
     params.require(:community).permit(:name, :description, :community_image, community_attributes: %i[user_id community_id])
   end
 
