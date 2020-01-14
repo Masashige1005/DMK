@@ -69,7 +69,7 @@ class SongsController < ApplicationController
   end
 
   # Youtube data v3の動画検索は以下の処理でやってます。
-  def find_videos(keyword, after: 10.years.ago, before: Time.now)
+  def find_videos(keyword)
     service = Google::Apis::YoutubeV3::YouTubeService.new
     service.key = ENV['GOOGLE_API_KEY']
 
@@ -80,8 +80,8 @@ class SongsController < ApplicationController
       max_results: 1,
       order: :relevance, # キーワードと関連性の高い順で絞り込み
       page_token: next_page_token,
-      published_after: after.iso8601,
-      published_before: before.iso8601
+      published_after: 10.years.ago.iso8601,
+      published_before: Time.now.iso8601
     }
     service.list_searches(:snippet, opt)
   end
