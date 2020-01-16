@@ -7,6 +7,9 @@ class Song < ApplicationRecord
   has_many :favorites, dependent: :destroy
   belongs_to :user
 
+  has_many :browsing_histories, dependent: :destroy
+
+
   is_impressionable
 
   # 商品にいいね

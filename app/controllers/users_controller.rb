@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @favorites = @user.favorites.includes(:song).order(id: 'DESC')
     @songs = @user.songs.order(id: 'DESC')
+    @history = @user.browsing_histories.order(id: 'DESC')
   end
 
   def update

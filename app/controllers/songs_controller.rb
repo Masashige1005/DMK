@@ -14,6 +14,21 @@ class SongsController < ApplicationController
   end
 
   def show
+    @history = @song.browsing_histories.new
+    @history.user_id = current_user.id
+    @history.song_id = @song.id
+    # 同一ユーザーの閲覧履歴に同じ楽曲の履歴をいくつも残さないようにする。
+    if current_user.browsing_histories.exists?(song_id: "#{params[:id]}")
+      @old_history = current_user.browsing_histories.find_by(song_id: "#{params[:id]}")
+      @old_history.destroy
+    end
+    @history.save
+    # 閲覧履歴の保存数を50に設定し、一番古い履歴を削除していく。
+    @histories_stock_limit = 50
+    @histories = current_user.browsing_histories.all
+    if @histories.count > @histories_stock_limit
+      histories[0].destroy
+    end
     @comment = Comment.new
     @comments = @song.comments.includes(:user).order(id: 'DESC')
     @artists = Song.where(artist: @song.artist)
@@ -114,6 +129,10 @@ class SongsController < ApplicationController
 
   def find_song
     @song = Song.find(params[:id])
+  end
+
+  def browsing_histories_action()
+
   end
 
   private

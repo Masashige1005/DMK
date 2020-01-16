@@ -1,4 +1,4 @@
-<!-- ユーザー がログインしていた場合 -->
+<#% ユーザー がログインしていた場合 %>
 <% if user_signed_in? %>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid block">
@@ -24,7 +24,7 @@
       <div class="list2"><%= render 'share/seach_form' %></div>
     </div>
   </nav>
-<!-- ユーザー がログインしていなかった場合 -->
+<#% ユーザー がログインしていなかった場合 %>
 <% else %>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid block">
