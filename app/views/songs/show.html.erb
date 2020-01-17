@@ -53,11 +53,11 @@
   <div class = "comment_index">
     <h2 class = "comment_title">コメント一覧</h2>
     <div id = "comments_area" class = "infinite-list jscroll">
-<#% 投稿されたコメント一覧を曲詳細ページに表示するためのrender %>
+<!-- 投稿されたコメント一覧を曲詳細ページに表示するためのrender -->
       <%= render partial: 'comments/index', locals: { comments: @comments, user: @user, song: @song } %>
     </div>
     <% if user_signed_in? %>
-<#% コメント入力欄を曲詳細ページに表示するためのrender %>
+<!-- コメント入力欄を曲詳細ページに表示するためのrender -->
       <%= render partial: 'comments/form', locals: { comment: @comment, song: @song } %>
     <% end %>
   </div>
