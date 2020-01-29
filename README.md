@@ -9,6 +9,7 @@
 そのため、多くの人にダンスミュージックの魅力に触れてもらいたいと思い、当サイトを制作しました。
 
 ## Requirement
+![DEMO](https://raw.githubusercontent.com/wiki/Masashige1005/DMK/songuploaded.gif)
 
 ## Usage
 
